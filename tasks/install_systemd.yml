@@ -1,0 +1,10 @@
+- name: "Setup systemd service"
+  template:
+    src: gitea.service.j2
+    dest: /lib/systemd/system/gitea.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - "Reload systemd"
+    - "Restart gitea"

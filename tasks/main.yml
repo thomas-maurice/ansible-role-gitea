@@ -1,0 +1,42 @@
+# TODO: variabilize this
+- name: "Download the binary"
+  get_url:
+    url: "https://github.com/go-gitea/gitea/releases/download/v1.0.1/gitea-1.0.1-linux-amd64"
+    dest: /usr/local/bin/gitea
+    owner: root
+    group: root
+    mode: 0755
+  notify: "Restart gitea"
+
+- include: create_user.yml
+
+- name: "Create config and data directory"
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ gitea_user }}"
+  with_items:
+    - "/etc/gitea"
+    - "{{ gitea_home }}"
+    - "{{ gitea_home }}/data"
+    - "{{ gitea_home }}/custom"
+    - "{{ gitea_home }}/custom/https"
+    - "{{ gitea_home }}/custom/mailer"
+
+# TODO: Support other systems than systemd
+- include: install_systemd.yml
+  when: ansible_service_mgr == "systemd"
+
+- name: "Configure gitea"
+  template:
+    src: gitea.ini.j2
+    dest: /etc/gitea/gitea.ini
+    owner: "{{ gitea_user }}"
+    mode: 0600
+  notify: "Restart gitea"
+
+- name: "Service gitea"
+  service:
+    name: gitea
+    state: started
+    enabled: true

@@ -1,0 +1,26 @@
+gitea_app_name: "Gitea"
+gitea_user: "gitea"
+gitea_home: "/var/lib/gitea"
+
+gitea_user_repo_limit: -1
+
+gitea_http_domain: localhost
+gitea_root_url: http://localhost:3000
+gitea_protocol: http
+gitea_http_listen: 127.0.0.1
+gitea_http_port: 3000
+gitea_disable_http_git: false
+gitea_offline_mode: true
+
+gitea_ssh_listen: 0.0.0.0
+gitea_ssh_domain: localhost
+gitea_start_ssh: true
+gitea_ssh_port: 2222
+
+gitea_secret_key: T0pS3cr31
+
+gitea_show_user_email: false
+gitea_disable_gravatar: true
+gitea_disable_registration: false
+gitea_require_signin: true
+gitea_enable_captcha: true

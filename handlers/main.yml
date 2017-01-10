@@ -1,0 +1,5 @@
+- name: "Restart gitea"
+  service: name=gitea state=restarted
+
+- name: "Reload systemd"
+  shell: "systemctl daemon-reload"
