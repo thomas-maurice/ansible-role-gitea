@@ -89,6 +89,16 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 * `gitea_start_ssh`: Do you start the SSH server ? (true/false)
 * `gitea_ssh_port`: SSH bind port
 
+### Database configuration
+
+* `gitea_db_type`: Database type, can be `mysql`, `postgres` or `sqlite3`
+* `gitea_db_host`: Database host string `host:port`
+* `gitea_db_name`: Database name
+* `gitea_db_user`: Database username
+* `gitea_db_passord`: Database password
+* `gitea_db_ssl`: Use SSL ? (postgres only!). Can be `required`, `disable`, `verify-full`
+* `gitea_db_path`: DB path, if you use `sqlite3`. The default is good enough to work though.
+
 ## Disclaimer
 This module is currently a work in progress. For now it is only able to install
 gitea from the Github Release, in a fixed version for Linux amd64, on systems
@@ -96,8 +106,6 @@ using systemd.
 
 This said, it should work on every major Linux distribution, it has been tested
 successfully on Debian Jessie 64 bits.
-
-Also it only supports the sqlite3 driver for now, but I'll improve soon.
 
 ## Contributing
 Do not hesitate to make me a pull request, and when in doubt you can reach me on

@@ -148,15 +148,15 @@ DSA     = 1024
 
 [database]
 ; Either "mysql", "postgres" or "sqlite3", it's your choice
-DB_TYPE  = sqlite3
-HOST     = 127.0.0.1:3306
-NAME     = gitea
-USER     = root
-PASSWD   =
+DB_TYPE  = {{ gitea_db_type }}
+HOST     = {{ gitea_db_host }}
+NAME     = {{ gitea_db_name }}
+USER     = {{ gitea_db_user }}
+PASSWD   = {{ gitea_db_passord }}
 ; For "postgres" only, either "disable", "require" or "verify-full"
-SSL_MODE = disable
+SSL_MODE = {{ gitea_db_ssl }}
 ; For "sqlite3" and "tidb", use absolute path when you start as service
-PATH     = {{ gitea_home }}/data/gitea.db
+PATH     = {{ gitea_db_path }}
 
 [admin]
 
