@@ -1,4 +1,4 @@
-# Ansible role gitea - Install a gitea server
+# Ansible role gitea - Install a gitea server
 
 This role installs and manages a [gitea](https://gitea.io) server -
 [Source code & screenshots](https://github.com/go-gitea/gitea).
@@ -7,7 +7,7 @@ Gitea is a Golang Git repository webapp, having the same look and feel as GitHub
 
 It is still under developpement, see "Disclaimer" if you can't make it work.
 
-## Sample exemple of use in a playbook
+## Sample exemple of use in a playbook
 
 The following have been tested with Debian 8, it should work on Ubuntu as well.
 
@@ -38,7 +38,6 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
     # For URLs rendering again
     gitea_ssh_domain: git.yourdomain.fr
     gitea_start_ssh: true
-    gitea_ssh_port: 2222
 
     gitea_secret_key: 3sp00ky5me
     gitea_disable_gravatar: true
@@ -53,7 +52,7 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 ```
 
 ## More detailed options
-### General
+### General
 
 * `gitea_user`: UNIX user used by Gitea
 * `gitea_home`: Base directory to work
@@ -69,7 +68,7 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 * `gitea_enable_captcha`: Do you enable captcha ? (true/false)
 * `gitea_secret_key`: Cookie secret key
 
-### Limits
+### Limits
 
 * `gitea_user_repo_limit`: Limit how many repos your user can have (-1 for unlimited)
 
@@ -82,7 +81,7 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 * `gitea_http_port`: Bind port
 * `gitea_disable_http_git`: Disable the use of Git over HTTP ? (true/false)
 
-### SSH configuration
+### SSH configuration
 
 * `gitea_ssh_listen`: Bind address for the SSH server
 * `gitea_ssh_domain`: SSH domain (displayed in your clone URLs)
@@ -99,7 +98,7 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 * `gitea_db_ssl`: Use SSL ? (postgres only!). Can be `required`, `disable`, `verify-full`
 * `gitea_db_path`: DB path, if you use `sqlite3`. The default is good enough to work though.
 
-## Disclaimer
+## Disclaimer
 This module is currently a work in progress. For now it is only able to install
 gitea from the Github Release, in a fixed version for Linux amd64, on systems
 using systemd.
@@ -113,5 +112,5 @@ Twitter [@thomas_maurice](https://twitter.com/thomas_maurice).
 
 I also would be happy to fix the issues that would be opened.
 
-## Author
+## Author
 This role is written by [Thomas Maurice](https://thomas.maurice.fr).
