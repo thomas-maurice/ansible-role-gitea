@@ -1,3 +1,5 @@
+gitea_version: "1.0.1"
+
 gitea_app_name: "Gitea"
 gitea_user: "gitea"
 gitea_home: "/var/lib/gitea"
