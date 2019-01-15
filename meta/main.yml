@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Thomas Maurice
-  description: Ansible Roie - Gitea
+  description: Ansible Role - Gitea
   platforms:
   - name: Debian
     versions:
