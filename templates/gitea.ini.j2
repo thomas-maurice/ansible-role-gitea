@@ -11,7 +11,7 @@ SCRIPT_TYPE               = bash
 ; Default ANSI charset
 ANSI_CHARSET              =
 ; Force every new repository to be private
-FORCE_PRIVATE             = false
+FORCE_PRIVATE             = {{ gitea_force_private }}
 ; Global maximum creation limit of repository per user, -1 means no limit
 MAX_CREATION_LIMIT        = {{ gitea_user_repo_limit }}
 ; Mirror sync queue length, increase if mirror syncing starts hanging
