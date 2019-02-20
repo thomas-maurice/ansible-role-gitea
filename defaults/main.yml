@@ -34,3 +34,5 @@ gitea_disable_gravatar: true
 gitea_disable_registration: false
 gitea_require_signin: true
 gitea_enable_captcha: true
+
+gitea_force_private: false
