@@ -3,3 +3,9 @@
 
 - name: "Reload systemd"
   shell: "systemctl daemon-reload"
+
+- name: "Restart fail2ban"
+  service:
+    name:  fail2ban
+    state: restarted
+

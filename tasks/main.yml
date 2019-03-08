@@ -41,3 +41,6 @@
     name: gitea
     state: started
     enabled: true
+
+- include: fail2ban.yml
+  when: gitea_install_fail2ban_config
