@@ -98,6 +98,13 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 * `gitea_db_ssl`: Use SSL ? (postgres only!). Can be `required`, `disable`, `verify-full`
 * `gitea_db_path`: DB path, if you use `sqlite3`. The default is good enough to work though.
 
+### Mailer configuration
+
+* `gitea_mailer_enabled`: Wether to enable the mailer. Default: `false`
+* `gitea_mailer_skip_verify`: Skip SMTP TLS certificate verification
+* `gitea_mailer_host`: SMTP server hostname and port
+* `gitea_mailer_from`: Sender mail address
+
 ## Disclaimer
 This module is currently a work in progress. For now it is only able to install
 gitea from the Github Release, in a fixed version for Linux amd64, on systems
