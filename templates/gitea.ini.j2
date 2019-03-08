@@ -210,7 +210,7 @@ SKIP_TLS_VERIFY = false
 PAGING_NUM      = 10
 
 [mailer]
-ENABLED                 = false
+ENABLED                 = {{ gitea_mailer_enabled }}
 ; Buffer length of channel, keep it as it is if you don't know what it is.
 SEND_BUFFER_LEN         = 100
 ; Name displayed in mail title
@@ -219,19 +219,19 @@ SUBJECT                 = %(APP_NAME)s
 ; Gmail: smtp.gmail.com:587
 ; QQ: smtp.qq.com:465
 ; Note, if the port ends with "465", SMTPS will be used. Using STARTTLS on port 587 is recommended per RFC 6409. If the server supports STARTTLS it will always be used.
-HOST                    =
+HOST                    = {{ gitea_mailer_host }}
 ; Disable HELO operation when hostname are different.
 DISABLE_HELO            =
 ; Custom hostname for HELO operation, default is from system.
 HELO_HOSTNAME           =
 ; Do not verify the certificate of the server. Only use this for self-signed certificates
-SKIP_VERIFY             =
+SKIP_VERIFY             = {{ gitea_mailer_skip_verify }}
 ; Use client certificate
 USE_CERTIFICATE         = false
 CERT_FILE               = {{ gitea_home }}/custom/mailer/cert.pem
 KEY_FILE                = {{ gitea_home }}/custom/mailer/key.pem
 ; Mail from address, RFC 5322. This can be just an email address, or the `"Name" <email@example.com>` format
-FROM                    =
+FROM                    = {{ gitea_mailer_from }}
 ; Mailer user name and password
 USER                    =
 PASSWD                  =
