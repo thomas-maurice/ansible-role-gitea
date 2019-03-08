@@ -18,7 +18,7 @@ gitea_db_type: sqlite3
 gitea_db_host: 127.0.0.0:3306
 gitea_db_name: root
 gitea_db_user: gitea
-gitea_db_passord: lel
+gitea_db_password: lel
 gitea_db_ssl: disable
 gitea_db_path: "{{ gitea_home }}/data/gitea.db"
 
