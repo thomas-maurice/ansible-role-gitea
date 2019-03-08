@@ -94,7 +94,7 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 * `gitea_db_host`: Database host string `host:port`
 * `gitea_db_name`: Database name
 * `gitea_db_user`: Database username
-* `gitea_db_passord`: Database password
+* `gitea_db_password`: Database password
 * `gitea_db_ssl`: Use SSL ? (postgres only!). Can be `required`, `disable`, `verify-full`
 * `gitea_db_path`: DB path, if you use `sqlite3`. The default is good enough to work though.
 
