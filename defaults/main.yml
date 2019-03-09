@@ -1,4 +1,4 @@
-gitea_version: "1.0.1"
+gitea_version: "1.7.3"
 
 gitea_app_name: "Gitea"
 gitea_user: "gitea"
