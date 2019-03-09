@@ -42,3 +42,8 @@ gitea_mailer_host:    localhost:25
 gitea_mailer_from:    noreply@your.domain
 
 gitea_fail2ban_enabled: false
+gitea_fail2ban_jail_maxretry: 10
+gitea_fail2ban_jail_findtime: 3600
+gitea_fail2ban_jail_bantime: 900
+gitea_fail2ban_jail_action: iptables-allports
+
