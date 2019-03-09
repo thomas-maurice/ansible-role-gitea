@@ -107,7 +107,13 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 
 ### Fail2Ban configuration
 
+If enabled, this will deploy a fail2ban filter and jail config for Gitea as described in the [Gitea Documentation](https://docs.gitea.io/en-us/fail2ban-setup/). Fail2ban has to be already installed.
+
 * `gitea_fail2ban_enabled`: Wether to deploy the fail2ban config snippets
+* `gitea_fail2ban_jail_maxretry`: fail2ban jail `maxretry` setting. Default: `10`
+* `gitea_fail2ban_jail_findtime`: fail2ban jail `findtime` setting. Default: `3600`
+* `gitea_fail2ban_jail_bantime`: fail2ban jail `bantime` setting. Default: `900`
+* `gitea_fail2ban_jail_action`: fail2ban jail `action` setting. Default: `iptables-allports`
 
 ## Disclaimer
 This module is currently a work in progress. For now it is only able to install
