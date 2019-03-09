@@ -43,4 +43,4 @@
     enabled: true
 
 - include: fail2ban.yml
-  when: gitea_install_fail2ban_config
+  when: gitea_fail2ban_enabled

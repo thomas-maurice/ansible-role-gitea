@@ -41,4 +41,4 @@ gitea_mailer_skip_verify: true
 gitea_mailer_host:    localhost:25
 gitea_mailer_from:    noreply@your.domain
 
-gitea_install_fail2ban_config: false
+gitea_fail2ban_enabled: false

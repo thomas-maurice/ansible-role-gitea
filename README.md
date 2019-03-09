@@ -107,7 +107,7 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 
 ### Fail2Ban configuration
 
-* `gitea_install_fail2ban_config`: Wether to deploy the fail2ban config snippets
+* `gitea_fail2ban_enabled`: Wether to deploy the fail2ban config snippets
 
 ## Disclaimer
 This module is currently a work in progress. For now it is only able to install
