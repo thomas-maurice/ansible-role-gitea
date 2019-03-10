@@ -28,6 +28,7 @@ gitea_start_ssh: true
 gitea_ssh_port: 2222
 
 gitea_secret_key: T0pS3cr31
+gitea_internal_token: SomethingVeryLong
 
 gitea_show_user_email: false
 gitea_disable_gravatar: true
