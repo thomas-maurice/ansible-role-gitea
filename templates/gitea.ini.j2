@@ -251,18 +251,18 @@ DB_RETRY_BACKOFF = 3s
 ; Issue indexer type, currently support: bleve or db, default is bleve
 ISSUE_INDEXER_TYPE = bleve
 ; Issue indexer storage path, available when ISSUE_INDEXER_TYPE is bleve
-ISSUE_INDEXER_PATH = indexers/issues.bleve
+ISSUE_INDEXER_PATH = {{ gitea_home }}/indexers/issues.bleve
 ; Issue indexer queue, currently support: channel or levelqueue, default is levelqueue
 ISSUE_INDEXER_QUEUE_TYPE = levelqueue
-; When ISSUE_INDEXER_QUEUE_TYPE is levelqueue, this will be the queue will be saved path, 
+; When ISSUE_INDEXER_QUEUE_TYPE is levelqueue, this will be the queue will be saved path,
 ; default is indexers/issues.queue
-ISSUE_INDEXER_QUEUE_DIR = indexers/issues.queue
+ISSUE_INDEXER_QUEUE_DIR = {{ gitea_home }}/indexers/issues.queue
 ; Batch queue number, default is 20
 ISSUE_INDEXER_QUEUE_BATCH_NUMBER = 20
 
 ; repo indexer by default disabled, since it uses a lot of disk space
 REPO_INDEXER_ENABLED = false
-REPO_INDEXER_PATH = indexers/repos.bleve
+REPO_INDEXER_PATH = i{{ gitea_home }}/ndexers/repos.bleve
 UPDATE_BUFFER_LEN = 20
 MAX_FILE_SIZE = 1048576
 
@@ -309,7 +309,7 @@ DISABLE_GIT_HOOKS = false
 ;  - <username>.livejournal.com
 ;
 ; Whether to allow signin in via OpenID
-ENABLE_OPENID_SIGNIN = true
+ENABLE_OPENID_SIGNIN = false
 ; Whether to allow registering via OpenID
 ; Do not include to rely on rhw DISABLE_REGISTRATION setting
 ;ENABLE_OPENID_SIGNUP = true
@@ -383,10 +383,10 @@ DEFAULT_ALLOW_ONLY_CONTRIBUTORS_TO_TRACK_TIME = true
 ; concatenation of the user name in lower case, "@" and NO_REPLY_ADDRESS.
 NO_REPLY_ADDRESS = noreply.example.org
 ; Show Registration button
-SHOW_REGISTRATION_BUTTON = true
+SHOW_REGISTRATION_BUTTON = false
 ; Default value for AutoWatchNewRepos
-; When adding a repo to a team or creating a new repo all team members will watch the 
-; repo automatically if enabled 
+; When adding a repo to a team or creating a new repo all team members will watch the
+; repo automatically if enabled
 AUTO_WATCH_NEW_REPOS = true
 
 [webhook]
