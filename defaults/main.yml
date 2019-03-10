@@ -37,8 +37,10 @@ gitea_require_signin: true
 gitea_enable_captcha: true
 
 gitea_force_private: false
+
 gitea_mailer_enabled: false
-gitea_mailer_skip_verify: true
+gitea_mailer_skip_verify: false
+gitea_mailer_tls_enabled: true
 gitea_mailer_host:    localhost:25
 gitea_mailer_from:    noreply@your.domain
 
