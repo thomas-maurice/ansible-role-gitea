@@ -50,3 +50,6 @@ gitea_fail2ban_jail_findtime: 3600
 gitea_fail2ban_jail_bantime: 900
 gitea_fail2ban_jail_action: iptables-allports
 
+gitea_oauth2_enabled: true
+gitea_oauth2_jwt_secret: ChangeMe
+
