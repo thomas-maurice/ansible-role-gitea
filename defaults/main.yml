@@ -33,6 +33,7 @@ gitea_internal_token: SomethingVeryLong
 gitea_show_user_email: false
 gitea_disable_gravatar: true
 gitea_disable_registration: false
+gitea_show_registration_button: true
 gitea_require_signin: true
 gitea_enable_captcha: true
 
