@@ -164,8 +164,8 @@ PATH     = {{ gitea_db_path }}
 ; Whether the installer is disabled
 INSTALL_LOCK                      = true
 ; !!CHANGE THIS TO KEEP YOUR USER DATA SAFE!!
-#@FDEWREWR&*(
 SECRET_KEY                        = {{ gitea_secret_key }}
+INTERNAL_TOKEN                    = {{ gitea_internal_token }}
 ; Auto-login remember days
 LOGIN_REMEMBER_DAYS               = 7
 COOKIE_USERNAME                   = gitea_awesome
