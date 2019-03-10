@@ -421,7 +421,7 @@ USE_CERTIFICATE = false
 CERT_FILE               = {{ gitea_home }}/custom/mailer/cert.pem
 KEY_FILE                = {{ gitea_home }}/custom/mailer/key.pem
 ; Should SMTP connection use TLS
-IS_TLS_ENABLED = false
+IS_TLS_ENABLED = {{ gitea_mailer_tls_enabled }}
 ; Mail from address, RFC 5322. This can be just an email address, or the `"Name" <email@example.com>` format
 FROM                    = {{ gitea_mailer_from }}
 ; Mailer user name and password
