@@ -64,9 +64,11 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 * `gitea_disable_gravatar`: Do you disable Gravatar ? (privacy and so on) (true/false)
 * `gitea_offline_mode`: Same but with disabling CDNs (true/false)
 * `gitea_disable_registration`: Do you disable user registration ? (true/false)
+* `gitea_show_registration_button`: Do you want to show the registration button? (true/false)
 * `gitea_require_signin`: Do you require signin to see things (even public ones) ? (true/false)
 * `gitea_enable_captcha`: Do you enable captcha ? (true/false)
 * `gitea_secret_key`: Cookie secret key
+* `gitea_internal_token`: Internal API token
 
 ### Limits
 
@@ -101,7 +103,8 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 ### Mailer configuration
 
 * `gitea_mailer_enabled`: Wether to enable the mailer. Default: `false`
-* `gitea_mailer_skip_verify`: Skip SMTP TLS certificate verification
+* `gitea_mailer_skip_verify`: Skip SMTP TLS certificate verification (true/false)
+* `gitea_mailer_tls_enabled`: Enable TLS for SMTP connection (true/false)
 * `gitea_mailer_host`: SMTP server hostname and port
 * `gitea_mailer_from`: Sender mail address
 
@@ -116,6 +119,11 @@ As this will only deploy config files fail2ban has to be already installed, othe
 * `gitea_fail2ban_jail_findtime`: fail2ban jail `findtime` setting. Default: `3600`
 * `gitea_fail2ban_jail_bantime`: fail2ban jail `bantime` setting. Default: `900`
 * `gitea_fail2ban_jail_action`: fail2ban jail `action` setting. Default: `iptables-allports`
+
+### Oauth2 provider configuration
+
+* `gitea_oauth2_enabled`: Enable the Oauth2 provider (true/false)
+* `gitea_oauth2_jwt_secret`: JWT secret
 
 ## Disclaimer
 This module is currently a work in progress. For now it is only able to install
