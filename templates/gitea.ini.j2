@@ -12,6 +12,8 @@ SCRIPT_TYPE               = bash
 ANSI_CHARSET              =
 ; Force every new repository to be private
 FORCE_PRIVATE             = {{ gitea_force_private }}
+; Default privacy setting when creating a new repository, allowed values: last, private, public. Default is last which means the last setting used.
+DEFAULT_PRIVATE = last
 ; Global maximum creation limit of repository per user, -1 means no limit
 MAX_CREATION_LIMIT        = {{ gitea_user_repo_limit }}
 ; Mirror sync queue length, increase if mirror syncing starts hanging
