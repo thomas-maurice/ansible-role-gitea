@@ -1,4 +1,5 @@
 # Ansible role gitea - Install a gitea server
+[![Build Status](https://travis-ci.org/thomas-maurice/ansible-role-gitea.svg?branch=master)](https://travis-ci.org/thomas-maurice/ansible-role-gitea)
 
 This role installs and manages a [gitea](https://gitea.io) server -
 [Source code & screenshots](https://github.com/go-gitea/gitea).
@@ -137,7 +138,39 @@ successfully on Debian Jessie 64 bits.
 Do not hesitate to make me a pull request, and when in doubt you can reach me on
 Twitter [@thomas_maurice](https://twitter.com/thomas_maurice).
 
-I also would be happy to fix the issues that would be opened.
+I also would be happy to fix the issues that would be opened, or even better, review
+your pull requests :)
 
-## Author
-This role is written by [Thomas Maurice](https://thomas.maurice.fr).
+## Testing
+Testing uses [molecule](https://molecule.readthedocs.io/en/stable-1.22/usage.html), to start the
+tests, install the dependencies, I would recommend you use a virtual env for that but who am I to
+tell you what to do.
+
+```
+pip install pew # install pew to manage the venvs
+pew new ansible # create the venv
+pip install -r requirements-travis.txt # install the requirements
+molecule test # Run the actual tests
+```
+
+Note: you need Docker installed
+
+### Known testing limitations
+As of now, it is mainly validating that the playbook runs, the lint is ok and that type of things,
+since it runs in Docker we have no way yet to check if the service actually is launched by systemd
+and so on, this has to be worked on.
+
+## License
+```
+Copyright 2019-present Thomas Maurice
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```

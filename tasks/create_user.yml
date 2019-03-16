@@ -1,3 +1,4 @@
+---
 - name: "Create Gitea user"
   user:
     name: "{{ gitea_user }}"
