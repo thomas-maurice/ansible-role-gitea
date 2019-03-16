@@ -1,13 +1,15 @@
 ---
 sudo: required
 language: python
+python:
+  - "3.6"
 services:
   - docker
 before_install:
   - sudo apt-get -qq update
   - >
       sudo apt-get install -o Dpkg::Options::="--force-confold"
-      --force-yes -y docker-engine
+      --force-yes -y docker-ce
 install:
   - pip install -r requirements-travis.txt
 script:
