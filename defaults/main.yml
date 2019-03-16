@@ -1,3 +1,4 @@
+---
 gitea_version: "1.7.3"
 
 gitea_app_name: "Gitea"
@@ -42,8 +43,8 @@ gitea_force_private: false
 gitea_mailer_enabled: false
 gitea_mailer_skip_verify: false
 gitea_mailer_tls_enabled: true
-gitea_mailer_host:    localhost:25
-gitea_mailer_from:    noreply@your.domain
+gitea_mailer_host: localhost:25
+gitea_mailer_from: noreply@your.domain
 
 gitea_fail2ban_enabled: false
 gitea_fail2ban_jail_maxretry: 10
@@ -53,4 +54,3 @@ gitea_fail2ban_jail_action: iptables-allports
 
 gitea_oauth2_enabled: true
 gitea_oauth2_jwt_secret: ChangeMe
-

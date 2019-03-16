@@ -1,0 +1,3 @@
+---
+gitea_arch: "{{ 'amd64' if ansible_architecture == 'x86_64' else ansible_architecture }}"
+gitea_dl_url: "https://github.com/go-gitea/gitea/releases/download"

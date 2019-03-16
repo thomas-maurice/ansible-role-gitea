@@ -1,11 +1,17 @@
+---
 - name: "Restart gitea"
-  service: name=gitea state=restarted
+  service:
+    name: gitea
+    state: restarted
+  when: ansible_service_mgr == "systemd"
 
 - name: "Reload systemd"
-  shell: "systemctl daemon-reload"
+  systemd:
+    daemon_reload: true
+  when: ansible_service_mgr == "systemd"
 
 - name: "Restart fail2ban"
   service:
-    name:  fail2ban
+    name: fail2ban
     state: restarted
-
+  when: ansible_service_mgr == "systemd"
