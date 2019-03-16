@@ -9,9 +9,9 @@ galaxy_info:
     - gitea
     - system
     - development
-    - source-control
-    - self-hosted
-    - git-server
+    - sourcecontrol
+    - selfhosted
+    - gitserver
     - gogs
   platforms:
     - name: Debian
