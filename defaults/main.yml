@@ -1,9 +1,10 @@
 ---
-gitea_version: "1.7.4"
+gitea_version: "1.7.5"
 
 gitea_app_name: "Gitea"
 gitea_user: "gitea"
 gitea_home: "/var/lib/gitea"
+gitea_shell: "/bin/false"
 
 gitea_user_repo_limit: -1
 
