@@ -4,4 +4,4 @@
     name: "{{ gitea_user }}"
     comment: "Gitea user"
     home: "{{ gitea_home }}"
-    shell: "/bin/false"
+    shell: "{{ gitea_shell }}"
