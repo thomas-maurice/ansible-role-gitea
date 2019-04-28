@@ -8,7 +8,7 @@ Gitea is a Golang Git repository webapp, having the same look and feel as GitHub
 
 It is still under developpement, see "Disclaimer" if you can't make it work.
 
-## Sample exemple of use in a playbook
+## Sample example of use in a playbook
 
 The following have been tested with Debian 8, it should work on Ubuntu as well.
 
@@ -55,6 +55,7 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 ## More detailed options
 ### General
 
+* `gitea_version_check`: Check if installed version != `gitea_version` before initiating binary download
 * `gitea_user`: UNIX user used by Gitea
 * `gitea_home`: Base directory to work
 
