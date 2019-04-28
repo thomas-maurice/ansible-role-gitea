@@ -1,4 +1,11 @@
 ---
+- name: "Check gitea version"
+  shell: "/usr/local/bin/gitea -v | cut -d' ' -f 3"
+  register: gitea_active_version
+  changed_when: false
+  failed_when: false
+  when: gitea_version_check
+
 - name: "Download the binary"
   get_url:
     url: "{{ gitea_dl_url }}/v{{ gitea_version }}/gitea-{{ gitea_version }}-linux-{{ gitea_arch }}"
@@ -8,6 +15,7 @@
     mode: 0755
     force: true
   notify: "Restart gitea"
+  when: (gitea_version_check == false) or (gitea_active_version.stdout != gitea_version)
 
 - include: create_user.yml
 
