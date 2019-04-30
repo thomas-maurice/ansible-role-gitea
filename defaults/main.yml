@@ -1,6 +1,6 @@
 ---
 gitea_version: "1.7.5"
-gitea_version_check: false
+gitea_version_check: true
 
 gitea_app_name: "Gitea"
 gitea_user: "gitea"
