@@ -6,8 +6,6 @@ This role installs and manages a [gitea](https://gitea.io) server -
 
 Gitea is a Golang Git repository webapp, having the same look and feel as GitHub.
 
-It is still under developpement, see "Disclaimer" if you can't make it work.
-
 ## Sample example of use in a playbook
 
 The following have been tested with Debian 8, it should work on Ubuntu as well.
@@ -126,14 +124,6 @@ As this will only deploy config files fail2ban has to be already installed, othe
 
 * `gitea_oauth2_enabled`: Enable the Oauth2 provider (true/false)
 * `gitea_oauth2_jwt_secret`: JWT secret
-
-## Disclaimer
-This module is currently a work in progress. For now it is only able to install
-gitea from the Github Release, in a fixed version for Linux amd64, on systems
-using systemd.
-
-This said, it should work on every major Linux distribution, it has been tested
-successfully on Debian Jessie 64 bits.
 
 ## Contributing
 Do not hesitate to make me a pull request, and when in doubt you can reach me on
