@@ -4,7 +4,7 @@
   register: gitea_active_version
   changed_when: false
   failed_when: false
-  when: gitea_version_check
+  when: gitea_version_check|bool
 
 - name: "Download the binary"
   get_url:
@@ -15,7 +15,7 @@
     mode: 0755
     force: true
   notify: "Restart gitea"
-  when: (not gitea_version_check) or (gitea_active_version.stdout != gitea_version)
+  when: (not gitea_version_check|bool) or (gitea_active_version.stdout != gitea_version)
 
 - include: create_user.yml
 
@@ -51,4 +51,4 @@
   when: ansible_service_mgr == "systemd"
 
 - include: fail2ban.yml
-  when: gitea_fail2ban_enabled
+  when: gitea_fail2ban_enabled|bool
