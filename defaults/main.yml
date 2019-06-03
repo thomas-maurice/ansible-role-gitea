@@ -1,5 +1,5 @@
 ---
-gitea_version: "1.8.1"
+gitea_version: "1.8.2"
 gitea_version_check: true
 
 gitea_app_name: "Gitea"
