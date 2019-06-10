@@ -126,9 +126,9 @@ IS_TLS_ENABLED = {{ gitea_mailer_tls_enabled }}
 ; Mail from address, RFC 5322. This can be just an email address, or the `"Name" <email@example.com>` format
 FROM                    = {{ gitea_mailer_from }}
 ; Mailer user name and password
-USER =
+USER                    = {{ gitea_mailer_user }}
 ; Use PASSWD = `your password` for quoting if you use special characters in the password.
-PASSWD =
+PASSWD                  = `{{ gitea_mailer_password }}`
 ; Send mails as plain text
 SEND_AS_PLAIN_TEXT = false
 ; Set Mailer Type (either SMTP, sendmail or dummy to just send to the log)
