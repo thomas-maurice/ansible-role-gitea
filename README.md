@@ -106,6 +106,8 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 * `gitea_mailer_skip_verify`: Skip SMTP TLS certificate verification (true/false)
 * `gitea_mailer_tls_enabled`: Enable TLS for SMTP connection (true/false)
 * `gitea_mailer_host`: SMTP server hostname and port
+* `gitea_mailer_user`: SMTP server username
+* `gitea_mailer_password`: SMTP server password
 * `gitea_mailer_from`: Sender mail address
 
 ### Fail2Ban configuration
