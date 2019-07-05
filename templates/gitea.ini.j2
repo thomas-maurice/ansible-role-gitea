@@ -51,6 +51,12 @@ SSH_LISTEN_PORT       = %(SSH_PORT)s
 OFFLINE_MODE          = {{ gitea_offline_mode }}
 ; Default path for App data
 APP_DATA_PATH         = {{ gitea_home }}/data
+{%- if gitea_lfs_server_enabled | bool %}
+;Enables git-lfs support.
+LFS_START_SERVER      = true
+; Where to store LFS files.
+LFS_CONTENT_PATH      = {{ gitea_lfs_content_path }}
+{%- endif %}
 
 [database]
 ; Either "mysql", "postgres", "mssql" or "sqlite3", it's your choice

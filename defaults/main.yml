@@ -17,6 +17,9 @@ gitea_http_port: 3000
 gitea_disable_http_git: false
 gitea_offline_mode: true
 
+gitea_lfs_server_enabled: false
+gitea_lfs_content_path: "data/lfs"
+
 gitea_db_type: sqlite3
 gitea_db_host: 127.0.0.0:3306
 gitea_db_name: root
