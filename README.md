@@ -8,7 +8,7 @@ Gitea is a Golang Git repository webapp, having the same look and feel as GitHub
 
 ## Sample example of use in a playbook
 
-The following have been tested with Debian 8, it should work on Ubuntu as well.
+The following code has been tested with Debian 8, it should work on Ubuntu as well.
 
 ```yaml
 - name: "Install gitea"
@@ -18,7 +18,7 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
     gitea_home: "/var/lib/gitea"
     # To limit your users to 30 repos
     gitea_user_repo_limit: 30
-    # Not to make use of any CDN
+    # Don't use a public CDN for frontend assets
     gitea_offline_mode: true
 
     # Some 'rendering' options for your URLs
@@ -60,19 +60,19 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 ### Look and feel
 
 * `gitea_app_name`: Displayed application name
-* `gitea_show_user_email`: Do you share emails ? (true/false)
-* `gitea_disable_gravatar`: Do you disable Gravatar ? (privacy and so on) (true/false)
-* `gitea_offline_mode`: Same but with disabling CDNs (true/false)
-* `gitea_disable_registration`: Do you disable user registration ? (true/false)
+* `gitea_show_user_email`: Do you want to display email addresses ? (true/false)
+* `gitea_disable_gravatar`: Do you want to disable Gravatar ? (privacy and so on) (true/false)
+* `gitea_offline_mode`: Same but for disabling CDNs for frontend assets (true/false)
+* `gitea_disable_registration`: Do you want to disable user registration ? (true/false)
 * `gitea_show_registration_button`: Do you want to show the registration button? (true/false)
-* `gitea_require_signin`: Do you require signin to see things (even public ones) ? (true/false)
-* `gitea_enable_captcha`: Do you enable captcha ? (true/false)
+* `gitea_require_signin`: Do you require a signin to see repo's (even public ones) ? (true/false)
+* `gitea_enable_captcha`: Do you want to enable captcha's ? (true/false)
 * `gitea_secret_key`: Cookie secret key
 * `gitea_internal_token`: Internal API token
 
 ### Limits
 
-* `gitea_user_repo_limit`: Limit how many repos your user can have (-1 for unlimited)
+* `gitea_user_repo_limit`: Limit how many repos a user can have (-1 for unlimited)
 
 ### HTTP configuration
 
@@ -87,7 +87,7 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 
 * `gitea_ssh_listen`: Bind address for the SSH server
 * `gitea_ssh_domain`: SSH domain (displayed in your clone URLs)
-* `gitea_start_ssh`: Do you start the SSH server ? (true/false)
+* `gitea_start_ssh`: Do you want to start a built-in SSH server ? (true/false)
 * `gitea_ssh_port`: SSH bind port
 
 ### Database configuration
@@ -102,9 +102,9 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 
 ### Mailer configuration
 
-* `gitea_mailer_enabled`: Wether to enable the mailer. Default: `false`
+* `gitea_mailer_enabled`: Whether to enable the mailer. Default: `false`
 * `gitea_mailer_skip_verify`: Skip SMTP TLS certificate verification (true/false)
-* `gitea_mailer_tls_enabled`: Enable TLS for SMTP connection (true/false)
+* `gitea_mailer_tls_enabled`: Enable TLS for SMTP connections (true/false)
 * `gitea_mailer_host`: SMTP server hostname and port
 * `gitea_mailer_user`: SMTP server username
 * `gitea_mailer_password`: SMTP server password
@@ -114,9 +114,9 @@ The following have been tested with Debian 8, it should work on Ubuntu as well.
 
 If enabled, this will deploy a fail2ban filter and jail config for Gitea as described in the [Gitea Documentation](https://docs.gitea.io/en-us/fail2ban-setup/).
 
-As this will only deploy config files fail2ban has to be already installed, otherwise the role will fail.
+As this will only deploy config files, fail2ban already has to be installed or otherwise the role will fail.
 
-* `gitea_fail2ban_enabled`: Wether to deploy the fail2ban config snippets
+* `gitea_fail2ban_enabled`: Whether to deploy the fail2ban config or not
 * `gitea_fail2ban_jail_maxretry`: fail2ban jail `maxretry` setting. Default: `10`
 * `gitea_fail2ban_jail_findtime`: fail2ban jail `findtime` setting. Default: `3600`
 * `gitea_fail2ban_jail_bantime`: fail2ban jail `bantime` setting. Default: `900`
@@ -128,16 +128,14 @@ As this will only deploy config files fail2ban has to be already installed, othe
 * `gitea_oauth2_jwt_secret`: JWT secret
 
 ## Contributing
-Do not hesitate to make me a pull request, and when in doubt you can reach me on
+Don't hesitate to create a pull request, and when in doubt you can reach me on
 Twitter [@thomas_maurice](https://twitter.com/thomas_maurice).
 
-I also would be happy to fix the issues that would be opened, or even better, review
-your pull requests :)
+I'm happy to fix any issue that's been opened, or even better, review your pull requests :)
 
 ## Testing
-Testing uses [molecule](https://molecule.readthedocs.io/en/stable-1.22/usage.html), to start the
-tests, install the dependencies, I would recommend you use a virtual env for that but who am I to
-tell you what to do.
+Testing uses [molecule](https://molecule.readthedocs.io/en/stable-1.22/usage.html). To start the
+tests, install the dependencies first. I would recommend you use [a virtual env](https://virtualenv.pypa.io/en/latest/) for that but who am I to tell you what to do.
 
 ```
 pip install pew # install pew to manage the venvs
@@ -149,9 +147,9 @@ molecule test # Run the actual tests
 Note: you need Docker installed
 
 ### Known testing limitations
-As of now, it is mainly validating that the playbook runs, the lint is ok and that type of things,
-since it runs in Docker we have no way yet to check if the service actually is launched by systemd
-and so on, this has to be worked on.
+Currently it's mainly validating that the playbook runs, the lint is ok, and that kind of things.
+Since it runs in Docker, we currently have no way to check if the service is actually launched by systemd
+and so on. This has to be worked on.
 
 ## License
 ```
