@@ -127,6 +127,11 @@ As this will only deploy config files, fail2ban already has to be installed or o
 * `gitea_oauth2_enabled`: Enable the Oauth2 provider (true/false)
 * `gitea_oauth2_jwt_secret`: JWT secret
 
+### Metrics endpoint configuration
+
+* `gitea_metrics_enabled`: Enable the metrics endpoint
+* `gitea_metrics_token`: Bearer token for the Prometheus scrape job
+
 ## Contributing
 Don't hesitate to create a pull request, and when in doubt you can reach me on
 Twitter [@thomas_maurice](https://twitter.com/thomas_maurice).

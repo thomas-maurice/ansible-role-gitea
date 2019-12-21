@@ -61,3 +61,6 @@ gitea_fail2ban_jail_action: iptables-allports
 
 gitea_oauth2_enabled: true
 gitea_oauth2_jwt_secret: ChangeMe
+
+gitea_metrics_enabled: false
+gitea_metrics_token: ~
