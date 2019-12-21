@@ -177,3 +177,7 @@ BUFFER_LEN = 10000
 LEVEL      = Info
 REDIRECT_MACARON_LOG = false
 
+[oauth2]
+ENABLE = {{ gitea_oauth2_enabled }}
+JWT_SECRET = {{ gitea_oauth2_jwt_secret }}
+
