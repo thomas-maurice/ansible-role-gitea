@@ -1,0 +1,7 @@
+---
+- name: run checks to ensure set variables do not crash gitea
+  block:
+    - fail:
+        msg: 'gitea_oauth2_jwt_secret cannot be longer than 32 characters. Please reduce the length of your token'
+      when: gitea_oauth2_jwt_secret | length > 32
+

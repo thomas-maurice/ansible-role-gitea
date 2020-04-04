@@ -125,7 +125,8 @@ As this will only deploy config files, fail2ban already has to be installed or o
 ### Oauth2 provider configuration
 
 * `gitea_oauth2_enabled`: Enable the Oauth2 provider (true/false)
-* `gitea_oauth2_jwt_secret`: JWT secret
+* `gitea_oauth2_jwt_secret`: JWT secret, cannot be longer than 32 characters
+
 
 ### Metrics endpoint configuration
 
