@@ -52,6 +52,7 @@
     state: started
     enabled: true
   when: ansible_service_mgr == "systemd"
+  ignore_errors: true
 
 - include: fail2ban.yml
   when: gitea_fail2ban_enabled|bool
