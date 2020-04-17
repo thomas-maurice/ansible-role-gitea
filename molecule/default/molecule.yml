@@ -1,32 +1,40 @@
 ---
 dependency:
   name: galaxy
+
 driver:
   name: docker
-lint:
-  name: yamllint
+
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+
 platforms:
-  - name: centos7
-    image: centos:7
-  - name: debian-stretch
-    image: debian:stretch
-  - name: debian-jessie
-    image: debian:jessie
-  - name: ubuntu-xenial
-    image: ubuntu:xenial
-  - name: ubuntu-bionic
-    image: ubuntu:bionic
+  - name: instance
+    image: geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest
+    pre_build_image: true
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+
+
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
+  playbooks:
+    prepare: prepare.yml
+    converge: converge.yml
+
 scenario:
-  name: default
   test_sequence:
     - lint
     - destroy
+    - syntax
     - create
+    - prepare
     - converge
+    - verify
     - destroy
 
 verifier:

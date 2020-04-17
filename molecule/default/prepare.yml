@@ -1,0 +1,22 @@
+---
+- name: Perpare
+  hosts: all
+  become: true
+  tasks:
+    - name: install dependencies for gitea (RedHat based systems)
+      yum:
+        name: "{{ packages }}"
+        state: present
+        update_cache: true
+      when: ansible_os_family == "RedHat"
+    - name: install dependencies for gitea (Debian based systems)
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: true
+      when: ansible_os_family == "Debian"
+
+  vars:
+    packages:
+      - git
+      - curl
