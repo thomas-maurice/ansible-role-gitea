@@ -12,7 +12,7 @@ lint: |
 
 platforms:
   - name: instance
-    image: geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest
+    image: geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu1804}-ansible:latest
     pre_build_image: true
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
