@@ -64,3 +64,6 @@ gitea_oauth2_jwt_secret: ChangeMe
 
 gitea_metrics_enabled: false
 gitea_metrics_token: ~
+
+gitea_themes: gitea,arc-green
+gitea_theme_default: gitea

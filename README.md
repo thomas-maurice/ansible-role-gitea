@@ -69,6 +69,8 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_enable_captcha`: Do you want to enable captcha's ? (true/false)
 * `gitea_secret_key`: Cookie secret key
 * `gitea_internal_token`: Internal API token
+* `gitea_themes`: List of enabled themes
+* `gitea_theme_default`: Default theme
 
 ### Limits
 
