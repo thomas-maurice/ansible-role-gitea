@@ -18,7 +18,7 @@
     mode: 0755
     force: true
   notify: "Restart gitea"
-  when: (not gitea_version_check|bool) or (gitea_active_version.stdout != gitea_version)
+  when: (not gitea_version_check|bool) or (not ansible_check_mode and (gitea_active_version.stdout != gitea_version))
 
 - include: create_user.yml
 
