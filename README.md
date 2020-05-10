@@ -64,6 +64,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_disable_gravatar`: Do you want to disable Gravatar ? (privacy and so on) (true/false)
 * `gitea_offline_mode`: Same but for disabling CDNs for frontend assets (true/false)
 * `gitea_disable_registration`: Do you want to disable user registration ? (true/false)
+* `gitea_only_allow_external_registration`: Do you want to force registration only using third-party services ? (true/false)
 * `gitea_show_registration_button`: Do you want to show the registration button? (true/false)
 * `gitea_require_signin`: Do you require a signin to see repo's (even public ones) ? (true/false)
 * `gitea_enable_captcha`: Do you want to enable captcha's ? (true/false)
