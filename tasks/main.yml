@@ -11,7 +11,7 @@
 
 - name: "Download the binary"
   get_url:
-    url: "{{ gitea_dl_url }}/v{{ gitea_version }}/gitea-{{ gitea_version }}-linux-{{ gitea_arch }}"
+    url: "{{ gitea_dl_url }}"
     dest: /usr/local/bin/gitea
     owner: root
     group: root
