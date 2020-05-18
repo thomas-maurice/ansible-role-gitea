@@ -13,7 +13,7 @@ RUN_USER = {{ gitea_user }}
 RUN_MODE = prod
 
 [repository]
-ROOT                  = {{ gitea_home }}
+ROOT                  = {{ gitea_repository_root }}
 ; Force every new repository to be private
 FORCE_PRIVATE         = {{ gitea_force_private }}
 ; Global limit of repositories per user, applied at creation time. -1 means no limit

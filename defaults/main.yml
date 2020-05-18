@@ -7,6 +7,7 @@ gitea_user: "gitea"
 gitea_home: "/var/lib/gitea"
 gitea_shell: "/bin/false"
 
+gitea_repository_root: "{{ gitea_home }}"
 gitea_user_repo_limit: -1
 
 gitea_http_domain: localhost
