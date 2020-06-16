@@ -4,6 +4,8 @@
 
 - name: "Check gitea version"
   shell: "set -eo pipefail; /usr/local/bin/gitea -v | cut -d' ' -f 3"
+  args:
+    executable: /bin/bash
   register: gitea_active_version
   changed_when: false
   failed_when: false
