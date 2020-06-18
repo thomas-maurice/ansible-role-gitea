@@ -56,6 +56,8 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_version_check`: Check if installed version != `gitea_version` before initiating binary download
 * `gitea_user`: UNIX user used by Gitea
 * `gitea_home`: Base directory to work
+* `gitea_dl_url`: The URL, the compiled gitea-binary will be downloaded from
+* `gitea_systemd_cap_net_bind_service`: Adds `AmbientCapabilities=CAP_NET_BIND_SERVICE` to systemd service file
 
 ### Look and feel
 
@@ -64,11 +66,14 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_disable_gravatar`: Do you want to disable Gravatar ? (privacy and so on) (true/false)
 * `gitea_offline_mode`: Same but for disabling CDNs for frontend assets (true/false)
 * `gitea_disable_registration`: Do you want to disable user registration ? (true/false)
+* `gitea_only_allow_external_registration`: Do you want to force registration only using third-party services ? (true/false)
 * `gitea_show_registration_button`: Do you want to show the registration button? (true/false)
 * `gitea_require_signin`: Do you require a signin to see repo's (even public ones) ? (true/false)
 * `gitea_enable_captcha`: Do you want to enable captcha's ? (true/false)
 * `gitea_secret_key`: Cookie secret key
 * `gitea_internal_token`: Internal API token
+* `gitea_themes`: List of enabled themes
+* `gitea_theme_default`: Default theme
 
 ### Limits
 

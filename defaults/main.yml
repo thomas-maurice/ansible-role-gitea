@@ -1,12 +1,15 @@
 ---
 gitea_version: "1.12.0"
 gitea_version_check: true
+gitea_dl_url: "https://github.com/go-gitea/gitea/releases/download/v{{ gitea_version }}/gitea-{{ gitea_version }}-linux-{{ gitea_arch }}"
 
 gitea_app_name: "Gitea"
 gitea_user: "gitea"
 gitea_home: "/var/lib/gitea"
 gitea_shell: "/bin/false"
+gitea_systemd_cap_net_bind_service: false
 
+gitea_repository_root: "{{ gitea_home }}"
 gitea_user_repo_limit: -1
 
 gitea_http_domain: localhost
@@ -42,6 +45,7 @@ gitea_disable_registration: false
 gitea_show_registration_button: true
 gitea_require_signin: true
 gitea_enable_captcha: true
+gitea_only_allow_external_registration: false
 
 gitea_force_private: false
 
@@ -64,3 +68,6 @@ gitea_oauth2_jwt_secret: ChangeMe
 
 gitea_metrics_enabled: false
 gitea_metrics_token: ~
+
+gitea_themes: gitea,arc-green
+gitea_theme_default: gitea

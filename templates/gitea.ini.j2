@@ -13,7 +13,7 @@ RUN_USER = {{ gitea_user }}
 RUN_MODE = prod
 
 [repository]
-ROOT                  = {{ gitea_home }}
+ROOT                  = {{ gitea_repository_root }}
 ; Force every new repository to be private
 FORCE_PRIVATE         = {{ gitea_force_private }}
 ; Global limit of repositories per user, applied at creation time. -1 means no limit
@@ -26,6 +26,8 @@ DISABLE_HTTP_GIT      = {{ gitea_disable_http_git }}
 [ui]
 ; Whether the email of the user should be shown in the Explore Users page
 SHOW_USER_EMAIL       = {{ gitea_show_user_email }}
+THEMES                = {{ gitea_themes }}
+DEFAULT_THEME         = {{ gitea_theme_default }}
 
 [server]
 ; The protocol the server listens on. One of 'http', 'https', 'unix' or 'fcgi'.
@@ -109,6 +111,7 @@ RECAPTCHA_SECRET  =
 RECAPTCHA_SITEKEY =
 ; Show Registration button
 SHOW_REGISTRATION_BUTTON = {{ gitea_show_registration_button }}
+ALLOW_ONLY_EXTERNAL_REGISTRATION = {{ gitea_only_allow_external_registration }}
 
 [mailer]
 ENABLED                 = {{ gitea_mailer_enabled }}
