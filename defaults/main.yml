@@ -71,3 +71,9 @@ gitea_metrics_token: ~
 
 gitea_themes: gitea,arc-green
 gitea_theme_default: gitea
+
+gitea_repo_indexer_enabled: false
+gitea_repo_indexer_include: ""
+gitea_repo_indexer_exclude: ""
+gitea_repo_exclude_vendored: true
+gitea_repo_indexer_max_file_size: 1048576
