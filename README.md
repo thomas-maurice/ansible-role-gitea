@@ -138,6 +138,14 @@ As this will only deploy config files, fail2ban already has to be installed or o
 * `gitea_metrics_enabled`: Enable the metrics endpoint
 * `gitea_metrics_token`: Bearer token for the Prometheus scrape job
 
+### Repository Indexer configuration
+
+* `gitea_repo_indexer_enabled`: Whether to enable the repository indexer (code search). Default: `false`
+* `gitea_repo_indexer_include`: Glob patterns to include in the index (comma-separated list). Default: `""` (all files)
+* `gitea_repo_indexer_exclude`: Glob patterns to exclude from the index (comma-separated list). Default: `""` (no files)
+* `gitea_repo_exclude_vendored`: Exclude vendored files from the index. Default: `true`
+* `gitea_repo_indexer_max_file_size`: Maximum size of files to be indexed (in bytes). Default: `1048576` (1 MB)
+
 ## Contributing
 Don't hesitate to create a pull request, and when in doubt you can reach me on
 Twitter [@thomas_maurice](https://twitter.com/thomas_maurice).

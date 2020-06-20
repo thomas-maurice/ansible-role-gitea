@@ -84,8 +84,12 @@ ISSUE_INDEXER_QUEUE_TYPE = levelqueue
 ISSUE_INDEXER_QUEUE_DIR = {{ gitea_home }}/indexers/issues.queue
 
 ; repo indexer by default disabled, since it uses a lot of disk space
-REPO_INDEXER_ENABLED = false
+REPO_INDEXER_ENABLED = {{ gitea_repo_indexer_enabled }}
 REPO_INDEXER_PATH       = {{ gitea_home }}/indexers/repos.bleve
+REPO_INDEXER_INCLUDE = {{ gitea_repo_indexer_include }}
+REPO_INDEXER_EXCLUDE = {{ gitea_repo_indexer_exclude }}
+REPO_INDEXER_EXCLUDE_VENDORED = {{ gitea_repo_exclude_vendored }}
+MAX_FILE_SIZE = {{ gitea_repo_indexer_max_file_size }}
 
 [security]
 ; Whether the installer is disabled
