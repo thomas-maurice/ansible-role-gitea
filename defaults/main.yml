@@ -56,6 +56,7 @@ gitea_mailer_host: localhost:25
 gitea_mailer_from: noreply@your.domain
 gitea_mailer_user: ""
 gitea_mailer_password: ""
+gitea_mailer_type: smtp
 
 gitea_fail2ban_enabled: false
 gitea_fail2ban_jail_maxretry: 10
