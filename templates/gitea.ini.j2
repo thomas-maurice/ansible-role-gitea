@@ -145,7 +145,7 @@ PASSWD                  = `{{ gitea_mailer_password }}`
 ; Send mails as plain text
 SEND_AS_PLAIN_TEXT = false
 ; Set Mailer Type (either SMTP, sendmail or dummy to just send to the log)
-MAILER_TYPE = smtp
+MAILER_TYPE = {{ gitea_mailer_type }}
 ; Specify an alternative sendmail binary
 SENDMAIL_PATH = sendmail
 ; Specify any extra sendmail arguments
