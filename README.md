@@ -114,6 +114,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_mailer_user`: SMTP server username
 * `gitea_mailer_password`: SMTP server password
 * `gitea_mailer_from`: Sender mail address
+* `gitea_enable_notify_mail`:  Whether e-mail should be send to watchers of a repository when something happens. Default: `false`
 
 ### Fail2Ban configuration
 
