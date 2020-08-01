@@ -1,5 +1,8 @@
 # Ansible role gitea - Install a gitea server
 [![Build Status](https://travis-ci.org/thomas-maurice/ansible-role-gitea.svg?branch=master)](https://travis-ci.org/thomas-maurice/ansible-role-gitea)
+![Ansible Role](https://img.shields.io/ansible/role/38779)
+![Ansible Role](https://img.shields.io/ansible/role/d/38779)
+![Ansible Quality Score](https://img.shields.io/ansible/quality/38779)
 
 This role installs and manages a [gitea](https://gitea.io) server -
 [Source code & screenshots](https://github.com/go-gitea/gitea).
