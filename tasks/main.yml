@@ -40,6 +40,11 @@
 - include: install_systemd.yml
   when: ansible_service_mgr == "systemd"
 
+- name: 'Install git'
+  package:
+    name: 'git'
+    state: 'present'
+
 - name: "Configure gitea"
   template:
     src: gitea.ini.j2
