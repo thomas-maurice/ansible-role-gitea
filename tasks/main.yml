@@ -29,6 +29,7 @@
     path: "{{ item }}"
     state: directory
     owner: "{{ gitea_user }}"
+    recurse: True
   with_items:
     - "/etc/gitea"
     - "{{ gitea_home }}"
@@ -36,6 +37,8 @@
     - "{{ gitea_home }}/custom"
     - "{{ gitea_home }}/custom/https"
     - "{{ gitea_home }}/custom/mailer"
+    - "{{ gitea_home }}/indexers"
+    - "{{ gitea_home }}/logs"
 
 - include: install_systemd.yml
   when: ansible_service_mgr == "systemd"
