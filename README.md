@@ -101,7 +101,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 ### Database configuration
 
 * `gitea_db_type`: Database type, can be `mysql`, `postgres` or `sqlite3`
-* `gitea_db_host`: Database host string `host:port`
+* `gitea_db_host`: Database host string `host:port` or `/run/postgresql/` when connectiong to postgres via local unix socket (peer authentication)
 * `gitea_db_name`: Database name
 * `gitea_db_user`: Database username
 * `gitea_db_password`: Database password
