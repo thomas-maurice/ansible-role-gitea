@@ -9,7 +9,3 @@
   notify:
     - "Reload systemd"
     - "Restart gitea"
-
-- name: "Reload systemd"
-  systemd:
-    daemon_reload: true
