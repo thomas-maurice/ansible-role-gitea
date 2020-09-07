@@ -9,3 +9,8 @@
   notify:
     - "Reload systemd"
     - "Restart gitea"
+
+# systemd to be reloaded the first time because it is the only way Systemd is going to be aware of the new unit file.
+- name: "Reload systemd"
+  systemd:
+    daemon_reload: true
