@@ -38,7 +38,7 @@
     - "{{ gitea_home }}/custom/https"
     - "{{ gitea_home }}/custom/mailer"
     - "{{ gitea_home }}/indexers"
-    - "{{ gitea_home }}/logs"
+    - "{{ gitea_home }}/log"
 
 - include: install_systemd.yml
   when: ansible_service_mgr == "systemd"
