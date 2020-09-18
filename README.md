@@ -93,8 +93,9 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_root_url`: Root URL used to access your web app (full URL)
 * `gitea_protocol`: Listening protocol (http/https)
 * `gitea_http_listen`: Bind address
-* `gitea_http_port`: Bind port
+* `gitea_http_port`: Bind port (redirect from `80` will be activated if value is `443` - Default: `3000`)
 * `gitea_disable_http_git`: Disable the use of Git over HTTP ? (true/false)
+* `gitea_http_letsencrypt_mail` Enable Let`s Encrypt if a email address is given
 
 ### SSH configuration
 

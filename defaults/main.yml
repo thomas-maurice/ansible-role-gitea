@@ -20,6 +20,7 @@ gitea_root_url: http://localhost:3000
 gitea_protocol: http
 gitea_http_listen: 127.0.0.1
 gitea_http_port: 3000
+# gitea_http_letsencrypt_mail:  - required
 gitea_disable_http_git: false
 gitea_offline_mode: true
 

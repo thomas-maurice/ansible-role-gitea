@@ -35,8 +35,16 @@ PROTOCOL         = {{ gitea_protocol }}
 DOMAIN           = {{ gitea_http_domain }}
 ROOT_URL         = {{ gitea_root_url }}
 ; The address to listen on. Either a IPv4/IPv6 address or the path to a unix socket.
-HTTP_ADDR        = {{ gitea_http_listen }}
-HTTP_PORT        = {{ gitea_http_port }}
+HTTP_ADDR             = {{ gitea_http_listen }}
+HTTP_PORT             = {{ gitea_http_port }}
+{% if gitea_http_port == 443 %}
+PORT_TO_REDIRECT      = 80
+{% endif %}
+{% if gitea_http_letsencrypt_mail is defined %}
+ENABLE_LETSENCRYPT    = true
+LETSENCRYPT_ACCEPTTOS = true
+LETSENCRYPT_EMAIL     = {{ gitea_http_letsencrypt_mail }}
+{% endif %}
 ; Disable SSH feature when not available
 DISABLE_SSH      = false
 ; Whether to use the builtin SSH server or not.
