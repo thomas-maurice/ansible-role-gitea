@@ -72,6 +72,9 @@ gitea_mailer_user: ""
 gitea_mailer_password: ""
 gitea_mailer_type: smtp
 
+gitea_log_systemd: false
+gitea_log_only_warning: true
+
 gitea_fail2ban_enabled: false
 gitea_fail2ban_jail_maxretry: 10
 gitea_fail2ban_jail_findtime: 3600

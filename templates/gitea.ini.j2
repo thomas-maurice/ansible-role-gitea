@@ -188,12 +188,21 @@ PATH    = {{ gitea_home }}/data/attachments
 ROOT_PATH            = {{ gitea_home }}/log
 ; Either "console", "file", "conn", "smtp" or "database", default is "console"
 ; Use comma to separate multiple modes, e.g. "console, file"
-MODE                 = file
+{% if gitea_log_systemd %}
+MODE       = console
+{% else %}
+MODE       = file
+{% endif %}
 ; Buffer length of the channel, keep it as it is if you don't know what it is.
 BUFFER_LEN           = 10000
 ; Either "Trace", "Debug", "Info", "Warn", "Error", "Critical", default is "Trace"
-LEVEL                = {{ gitea_log_level }}
+{% if gitea_log_only_warning %}
+LEVEL      = Warn
+REDIRECT_MACARON_LOG = true
+{% else %}
+LEVEL      = Info
 REDIRECT_MACARON_LOG = false
+{% endif %}
 
 [oauth2]
 ENABLE     = {{ gitea_oauth2_enabled }}

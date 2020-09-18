@@ -129,6 +129,10 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_autowatch_on_change`: Enable this to make users watch a repository after their first commit to it (Default: `true`)
 * `gitea_show_mailstones_dashboard`: Enable this to show the milestones dashboard page - a view of all the user’s milestones (Default: `true`)
 
+### Log configuration
+* `gitea_log_systemd` Disable logging into `file`, use systemd-journald
+* `gitea_log_only_warning` Log only warnings or above, no http access or sql logging (Default: `true`)
+
 ### Fail2Ban configuration
 
 If enabled, this will deploy a fail2ban filter and jail config for Gitea as described in the [Gitea Documentation](https://docs.gitea.io/en-us/fail2ban-setup/).
