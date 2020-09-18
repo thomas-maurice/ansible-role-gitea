@@ -71,6 +71,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_disable_gravatar`: Do you want to disable Gravatar ? (privacy and so on) (true/false)
 * `gitea_offline_mode`: Same but for disabling CDNs for frontend assets (true/false)
 * `gitea_disable_registration`: Do you want to disable user registration ? (true/false)
+* `gitea_register_email_confirm`: Enable this to ask for mail confirmation of registration. Requires `gitea_mailer_enabled` to be enabled (Default: `false`)
 * `gitea_only_allow_external_registration`: Do you want to force registration only using third-party services ? (true/false)
 * `gitea_show_registration_button`: Do you want to show the registration button? (true/false)
 * `gitea_require_signin`: Do you require a signin to see repo's (even public ones) ? (true/false)
@@ -123,6 +124,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_mailer_user`: SMTP server username
 * `gitea_mailer_password`: SMTP server password
 * `gitea_mailer_from`: Sender mail address
+* `gitea_subject_prefix`: Prefix to be placed before e-mail subject lines (Default: ``)
 * `gitea_enable_notify_mail`:  Whether e-mail should be send to watchers of a repository when something happens. Default: `false`
 * `gitea_mail_default`: Default configuration for email notifications for users (user configurable). Options: enabled, onmention, disable  (Default: `onmention` )
 * `gitea_autowatch_new_repo`: Enable this to let all organisation users watch new repos when they are created (Default: `false`)
