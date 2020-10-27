@@ -17,7 +17,7 @@ click-completion==0.5.2
 click-help-colors==0.8
 colorama==0.4.3
 cookiecutter==1.7.0
-cryptography==2.9
+cryptography==3.2
 docker==4.2.0
 docker-pycreds==0.4.0
 entrypoints==0.3
