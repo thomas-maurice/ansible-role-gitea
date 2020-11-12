@@ -118,6 +118,10 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_mailer_password`: SMTP server password
 * `gitea_mailer_from`: Sender mail address
 * `gitea_enable_notify_mail`:  Whether e-mail should be send to watchers of a repository when something happens. Default: `false`
+* `gitea_mail_default`: Default configuration for email notifications for users (user configurable). Options: enabled, onmention, disable  (Default: `onmention` )
+* `gitea_autowatch_new_repo`: Enable this to let all organisation users watch new repos when they are created (Default: `false`)
+* `gitea_autowatch_on_change`: Enable this to make users watch a repository after their first commit to it (Default: `true`)
+* `gitea_show_mailstones_dashboard`: Enable this to show the milestones dashboard page - a view of all the user’s milestones (Default: `true`)
 
 ### Fail2Ban configuration
 
