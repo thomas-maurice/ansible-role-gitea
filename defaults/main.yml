@@ -22,6 +22,8 @@ gitea_offline_mode: true
 
 gitea_lfs_server_enabled: false
 gitea_lfs_content_path: "data/lfs"
+gitea_lfs_secret: SomethingVeryLong
+gitea_lfs_mode: true
 
 gitea_db_type: sqlite3
 gitea_db_host: 127.0.0.0:3306

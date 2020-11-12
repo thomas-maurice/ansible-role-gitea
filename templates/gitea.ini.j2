@@ -58,8 +58,10 @@ APP_DATA_PATH         = {{ gitea_home }}/data
 LFS_START_SERVER      = true
 ; Where to store LFS files.
 LFS_CONTENT_PATH      = {{ gitea_lfs_content_path }}
+; if the LFS sotre is not offline/local
+LFS_JWT_SECRET   = {{ gitea_lfs_secret }} 
+OFFLINE_MODE     =  {{ gitea_lfs_mode }}
 {%- endif %}
-
 [database]
 ; Either "mysql", "postgres", "mssql" or "sqlite3", it's your choice
 DB_TYPE               = {{ gitea_db_type }}
