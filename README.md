@@ -136,6 +136,9 @@ As this will only deploy config files, fail2ban already has to be installed or o
 * `gitea_oauth2_enabled`: Enable the Oauth2 provider (true/false)
 * `gitea_oauth2_jwt_secret`: JWT secret, cannot be longer than 32 characters
 
+### GIT LFS configuration
+* `gitea_lfs_enabled`: Enable GIT LFS (large filesystem)
+* `gitea_lfs_mode`: should lfs be in offline mode (true/false)
 
 ### Metrics endpoint configuration
 
