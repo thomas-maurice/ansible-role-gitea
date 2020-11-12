@@ -143,6 +143,7 @@ As this will only deploy config files, fail2ban already has to be installed or o
 ### GIT LFS configuration
 * `gitea_lfs_enabled`: Enable GIT LFS (large filesystem)
 * `gitea_lfs_mode`: should lfs be in offline mode (true/false)
+* `gitea_lfs_secret`: JWT secret for remote LFS usage 
 
 ### Metrics endpoint configuration
 
