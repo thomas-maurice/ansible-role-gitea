@@ -73,10 +73,13 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_show_registration_button`: Do you want to show the registration button? (true/false)
 * `gitea_require_signin`: Do you require a signin to see repo's (even public ones) ? (true/false)
 * `gitea_enable_captcha`: Do you want to enable captcha's ? (true/false)
-* `gitea_secret_key`: Cookie secret key
-* `gitea_internal_token`: Internal API token
 * `gitea_themes`: List of enabled themes
 * `gitea_theme_default`: Default theme
+
+### Security
+* `gitea_secret_key`: Cookie secret key
+* `gitea_internal_token`: Internal API token
+* `gitea_disable_git_hooks`: Do you want to disable the interface to add git hooks? If enabled it could be a security bug as it can be used for RCE. Defaults to true (true/false)
 
 ### Limits
 

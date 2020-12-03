@@ -99,6 +99,7 @@ SECRET_KEY              = {{ gitea_secret_key }}
 INTERNAL_TOKEN          = {{ gitea_internal_token }}
 ; How long to remember that an user is logged in before requiring relogin (in days)
 LOGIN_REMEMBER_DAYS = 7
+DISABLE_GIT_HOOKS       = {{ gitea_disable_git_hooks }}
 
 [service]
 ; Disallow registration, only allow admins to create accounts.

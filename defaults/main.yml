@@ -38,6 +38,7 @@ gitea_ssh_port: 2222
 
 gitea_secret_key: T0pS3cr31
 gitea_internal_token: SomethingVeryLong
+gitea_disable_git_hooks: true
 
 gitea_show_user_email: false
 gitea_disable_gravatar: true
