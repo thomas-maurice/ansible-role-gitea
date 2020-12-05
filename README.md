@@ -61,6 +61,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_home`: Base directory to work
 * `gitea_dl_url`: The URL, the compiled gitea-binary will be downloaded from
 * `gitea_systemd_cap_net_bind_service`: Adds `AmbientCapabilities=CAP_NET_BIND_SERVICE` to systemd service file
+* `gitea_extra_config`: Additional configuration
 
 ### Look and feel
 
