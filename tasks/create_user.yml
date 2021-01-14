@@ -1,4 +1,9 @@
 ---
+- name: "Create Gitea Group"
+  group:
+    name: "{{ gitea_group }}"
+    state: present
+
 - name: "Create Gitea user"
   user:
     name: "{{ gitea_user }}"

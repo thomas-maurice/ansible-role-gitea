@@ -29,6 +29,7 @@
     path: "{{ item }}"
     state: directory
     owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
     recurse: True
   with_items:
     - "/etc/gitea"
@@ -53,6 +54,7 @@
     src: gitea.ini.j2
     dest: /etc/gitea/gitea.ini
     owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
     mode: 0600
   notify: "Restart gitea"
 

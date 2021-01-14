@@ -5,6 +5,7 @@ gitea_dl_url: "https://github.com/go-gitea/gitea/releases/download/v{{ gitea_ver
 
 gitea_app_name: "Gitea"
 gitea_user: "gitea"
+gitea_group: "gitea"
 gitea_home: "/var/lib/gitea"
 gitea_shell: "/bin/false"
 gitea_systemd_cap_net_bind_service: false
