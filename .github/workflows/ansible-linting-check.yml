@@ -1,0 +1,20 @@
+name: Ansible Lint check
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Lint Ansible Playbook
+      uses: ansible/ansible-lint-action@master
+      with:
+        targets: "."
+        # [required]
+        # Paths to ansible files (i.e., playbooks, tasks, handlers etc..)
+        args: ""
+        # [optional]
