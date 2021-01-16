@@ -30,7 +30,7 @@
     state: directory
     owner: "{{ gitea_user }}"
     mode: '0755'
-    recurse: True
+    recurse: true
   with_items:
     - "/etc/gitea"
     - "{{ gitea_home }}"
