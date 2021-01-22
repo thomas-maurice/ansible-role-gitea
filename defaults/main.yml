@@ -22,7 +22,8 @@ gitea_disable_http_git: false
 gitea_offline_mode: true
 
 gitea_lfs_server_enabled: false
-gitea_lfs_content_path: "data/lfs"
+gitea_lfs_content_path: "{{ gitea_home }}/data/lfs"
+gitea_lfs_jwt_secret: LongUniqueS3cret_
 
 gitea_db_type: sqlite3
 gitea_db_host: 127.0.0.0:3306

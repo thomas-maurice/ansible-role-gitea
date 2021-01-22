@@ -124,6 +124,13 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_mailer_from`: Sender mail address
 * `gitea_enable_notify_mail`:  Whether e-mail should be send to watchers of a repository when something happens. Default: `false`
 
+### LFS configuration
+
+* `gitea_lfs_enabled`: Enable GIT LFS *(git large file storeage: [git-lfs](https://git-lfs.github.com/))*. Default: `false`
+* `gitea_lfs_content_path`: path where the lfs files are stored
+* `gitea_lfs_secret`: JWT secret for remote LFS usage
+
+
 ### Fail2Ban configuration
 
 If enabled, this will deploy a fail2ban filter and jail config for Gitea as described in the [Gitea Documentation](https://docs.gitea.io/en-us/fail2ban-setup/).

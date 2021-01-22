@@ -58,6 +58,9 @@ APP_DATA_PATH         = {{ gitea_home }}/data
 LFS_START_SERVER      = true
 ; Where to store LFS files.
 LFS_CONTENT_PATH      = {{ gitea_lfs_content_path }}
+; LFS authentication secret
+LFS_JWT_SECRET        = {{ gitea_lfs_jwt_secret }}
+
 {%- endif %}
 
 [database]
