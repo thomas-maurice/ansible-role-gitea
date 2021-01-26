@@ -24,7 +24,17 @@
 
 - include: create_user.yml
 
-- name: "Create config and data directory"
+- name: "Create config directory"
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
+    mode: '0755'
+  with_items:
+    - "/etc/gitea"
+
+- name: "Create data directory"
   file:
     path: "{{ item }}"
     state: directory
@@ -33,7 +43,6 @@
     mode: '0755'
     recurse: true
   with_items:
-    - "/etc/gitea"
     - "{{ gitea_home }}"
     - "{{ gitea_home }}/data"
     - "{{ gitea_home }}/custom"

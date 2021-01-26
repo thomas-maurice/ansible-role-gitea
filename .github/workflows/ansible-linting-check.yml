@@ -1,6 +1,7 @@
 ---
 name: Ansible Lint check
 
+# yamllint disable-line rule:truthy
 on: [push, pull_request]
 
 jobs:
@@ -9,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - uses: actions/checkout@v2
 
       - name: Lint Ansible Playbook
