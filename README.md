@@ -58,6 +58,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 
 * `gitea_version_check`: Check if installed version != `gitea_version` before initiating binary download
 * `gitea_user`: UNIX user used by Gitea
+* `gitea_group`: UNIX group used by Gitea
 * `gitea_home`: Base directory to work
 * `gitea_dl_url`: The URL, the compiled gitea-binary will be downloaded from
 * `gitea_systemd_cap_net_bind_service`: Adds `AmbientCapabilities=CAP_NET_BIND_SERVICE` to systemd service file
@@ -127,7 +128,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 
 * `gitea_lfs_enabled`: Enable GIT LFS *(git large file storeage: [git-lfs](https://git-lfs.github.com/))*. Default: `false`
 * `gitea_lfs_content_path`: path where the lfs files are stored
-* `gitea_lfs_secret`: JWT secret for remote LFS usage
+* `gitea_lfs_secret`: JWT secret for remote LFS usage, has to be exactly 43 characters long
 
 
 ### Fail2Ban configuration
@@ -145,7 +146,7 @@ As this will only deploy config files, fail2ban already has to be installed or o
 ### Oauth2 provider configuration
 
 * `gitea_oauth2_enabled`: Enable the Oauth2 provider (true/false)
-* `gitea_oauth2_jwt_secret`: JWT secret, cannot be longer than 32 characters
+* `gitea_oauth2_jwt_secret`: JWT secret, has to be exactly 43 characters long
 
 
 ### Metrics endpoint configuration
