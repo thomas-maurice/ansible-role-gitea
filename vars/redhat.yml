@@ -1,3 +1,4 @@
+---
 gitea_dependencies:
   - git
   - gnupg2
