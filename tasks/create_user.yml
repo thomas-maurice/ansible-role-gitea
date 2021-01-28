@@ -10,3 +10,4 @@
     comment: "Gitea user"
     home: "{{ gitea_home }}"
     shell: "{{ gitea_shell }}"
+    system: yes
