@@ -80,7 +80,7 @@
     - name: Propagate gitea binary
       copy:
         src: "/tmp/gitea-{{ gitea_version }}.linux-{{ gitea_arch }}"
-        remote_src: True
+        remote_src: true
         dest: "/usr/local/bin/gitea"
         mode: 0755
         owner: root

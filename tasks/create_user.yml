@@ -2,8 +2,8 @@
 - name: "Create Gitea Group"
   group:
     name: "{{ gitea_group }}"
-    system: True
-    state: present
+    system: true
+    state: "present"
 
 - name: "Create Gitea user"
   user:
@@ -11,4 +11,4 @@
     comment: "Gitea user"
     home: "{{ gitea_home }}"
     shell: "{{ gitea_shell }}"
-    system: True
+    system: true
