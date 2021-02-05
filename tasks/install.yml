@@ -31,6 +31,7 @@
       command:
         cmd: "gitea dump -c /etc/gitea/gitea.ini"
         chdir: /var/backups/
+      become: true
       become_method: su
       become_user: "{{ gitea_user }}"
       become_flags: "-s /bin/sh"
