@@ -128,7 +128,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 
 * `gitea_lfs_enabled`: Enable GIT LFS *(git large file storeage: [git-lfs](https://git-lfs.github.com/))*. Default: `false`
 * `gitea_lfs_content_path`: path where the lfs files are stored
-* `gitea_lfs_secret`: JWT secret for remote LFS usage, has to be exactly 43 characters long
+* `gitea_lfs_secret`: JWT secret for remote LFS usage. Can be generated with ``gitea generate secret JWT_SECRET``
 
 
 ### Fail2Ban configuration
@@ -146,7 +146,7 @@ As this will only deploy config files, fail2ban already has to be installed or o
 ### Oauth2 provider configuration
 
 * `gitea_oauth2_enabled`: Enable the Oauth2 provider (true/false)
-* `gitea_oauth2_jwt_secret`: JWT secret, has to be exactly 43 characters long
+* `gitea_oauth2_jwt_secret`: Oauth2 JWT secret. Can be generated with ``gitea generate secret JWT_SECRET``
 
 
 ### Metrics endpoint configuration
