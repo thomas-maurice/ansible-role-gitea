@@ -57,7 +57,7 @@
     name: 'git'
     state: 'present'
 
-- include: jwt_secrets.yml
+- include_tasks: jwt_secrets.yml
 
 - name: "Configure gitea"
   template:
