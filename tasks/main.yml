@@ -20,7 +20,7 @@
   notify: "Restart gitea"
   when: (not gitea_version_check|bool) or (not ansible_check_mode and (gitea_active_version.stdout != gitea_version))
 
-- include: create_user.yml
+- ansible.builtin.include_tasks: create_user.yml
 
 - name: "Create config directory"
   file:
@@ -49,7 +49,7 @@
     - "{{ gitea_home }}/indexers"
     - "{{ gitea_home }}/log"
 
-- include: install_systemd.yml
+- ansible.builtin.include_tasks: install_systemd.yml
   when: ansible_service_mgr == "systemd"
 
 - name: 'Install git'
@@ -57,7 +57,7 @@
     name: 'git'
     state: 'present'
 
-- include: jwt_secrets.yml
+- ansible.builtin.include_tasks: jwt_secrets.yml
 
 - name: "Configure gitea"
   template:
@@ -75,5 +75,5 @@
     enabled: true
   when: ansible_service_mgr == "systemd"
 
-- include: fail2ban.yml
+- ansible.builtin.include_tasks: fail2ban.yml
   when: gitea_fail2ban_enabled|bool
