@@ -1,5 +1,5 @@
-ansible==2.9.6
-ansible-lint==4.2.0
+ansible==2.10.6
+ansible-lint==4.3.7
 anyconfig==0.9.7
 arrow==0.15.5
 asn1crypto==0.24.0
@@ -27,7 +27,7 @@ future==0.18.2
 git-url-parse==1.2.1
 idna==2.9
 importlib-metadata==1.6.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 jinja2-time==0.2.0
 MarkupSafe==1.1.1
 mccabe==0.6.1
@@ -65,5 +65,5 @@ tree-format==0.1.2
 urllib3==1.25.8
 websocket-client==0.57.0
 whichcraft==0.6.1
-yamllint==1.22.1
+yamllint==1.26.0
 zipp==3.1.0
