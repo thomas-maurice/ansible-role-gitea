@@ -38,7 +38,7 @@
     state: directory
     owner: "{{ gitea_user }}"
     group: "{{ gitea_group }}"
-    mode: '0755'
+    mode: 'u=rwX,g=rX,o='
     recurse: true
   with_items:
     - "{{ gitea_home }}"
