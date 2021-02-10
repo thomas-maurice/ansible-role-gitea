@@ -23,7 +23,7 @@ gitea_offline_mode: true
 
 gitea_lfs_server_enabled: false
 gitea_lfs_content_path: "{{ gitea_home }}/data/lfs"
-gitea_lfs_jwt_secret: 'ChangeMe1GGm26cTz5jsH9S3Df4MPzBx599wLCdKwmw'
+gitea_lfs_jwt_secret: ''
 
 gitea_db_type: sqlite3
 gitea_db_host: 127.0.0.0:3306
@@ -69,7 +69,7 @@ gitea_fail2ban_jail_bantime: 900
 gitea_fail2ban_jail_action: iptables-allports
 
 gitea_oauth2_enabled: true
-gitea_oauth2_jwt_secret: PLZChangeThisToAFourtyThreeCharacterString1
+gitea_oauth2_jwt_secret: ''
 
 gitea_metrics_enabled: false
 gitea_metrics_token: ~
