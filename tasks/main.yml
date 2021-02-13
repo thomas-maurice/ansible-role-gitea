@@ -19,6 +19,7 @@
 
 - name: backup gitea before update
   include_tasks: backup.yml
+  when: gitea_backup_on_upgrade|bool
 
 - name: install or update gitea
   include_tasks: install.yml

@@ -162,6 +162,10 @@ As this will only deploy config files, fail2ban already has to be installed or o
 * `gitea_repo_exclude_vendored`: Exclude vendored files from the index. Default: `true`
 * `gitea_repo_indexer_max_file_size`: Maximum size of files to be indexed (in bytes). Default: `1048576` (1 MB)
 
+### backup on upgrade
+* `gitea_backup_on_upgrade`: Optionally a backup can be created with every update of gitea. Default: `false`
+* `gitea_backup_location`: Where to store the gitea backup if one is created with this role. Default: `{{ gitea_home }}/backups/`
+
 ## Contributing
 Don't hesitate to create a pull request, and when in doubt you can reach me on
 Twitter [@thomas_maurice](https://twitter.com/thomas_maurice).
