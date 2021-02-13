@@ -18,28 +18,6 @@
       retries: 5
       delay: 2
 
-- name: Get service facts
-  service_facts:
-
-- block:
-    - name: Stopping gitea before upgrade
-      service:
-        name: gitea
-        state: stopped
-
-    - name: Backing up gitea before upgrade
-      command:
-        cmd: "gitea dump -c /etc/gitea/gitea.ini"
-        chdir: /var/backups/
-      become: true
-      become_method: su
-      become_user: "{{ gitea_user }}"
-      become_flags: "-s /bin/sh"
-  when:
-    - ansible_facts.services["gitea.service"] is defined
-    - ansible_facts.services["gitea.service"].state == "running"
-    - gitea_active_version.stdout != gitea_version
-
 - block:
     - name: Download gitea archive
       get_url:
