@@ -70,7 +70,7 @@ NAME     = {{ gitea_db_name }}
 USER     = {{ gitea_db_user }}
 ; Use PASSWD = `your password` for quoting if you use special characters in the password.
 PASSWD   = {{ gitea_db_password }}
-; For Postgres, either "disable" (default), "require", or "verify-full"
+; For Postgres, either "disable" (default), "require", "verify-ca" or "verify-full"
 ; For MySQL, either "false" (default), "true", or "skip-verify"
 SSL_MODE = {{ gitea_db_ssl }}
 ; For "sqlite3" and "tidb", use an absolute path when you start gitea as service
