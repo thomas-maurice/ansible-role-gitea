@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 User={{ gitea_user }}
+Group={{ gitea_group }}
 ExecStart=/usr/local/bin/gitea web -c /etc/gitea/gitea.ini
 Restart=on-failure
 WorkingDirectory={{ gitea_home }}

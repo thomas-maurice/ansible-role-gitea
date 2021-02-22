@@ -1,6 +1,12 @@
 ---
-
-- include: check-variables.yml
+- name: Gather variables for each operating system
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+    - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+    - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+    - "{{ ansible_distribution | lower }}.yml"
+    - "{{ ansible_os_family | lower }}.yml"
 
 - name: "Check gitea version"
   shell: "set -eo pipefail; /usr/local/bin/gitea -v | cut -d' ' -f 3"
@@ -11,27 +17,29 @@
   failed_when: false
   when: gitea_version_check|bool
 
-- name: "Download the binary"
-  get_url:
-    url: "{{ gitea_dl_url }}"
-    dest: /usr/local/bin/gitea
-    owner: root
-    group: root
-    mode: 0755
-    force: true
-  notify: "Restart gitea"
-  when: (not gitea_version_check|bool) or (not ansible_check_mode and (gitea_active_version.stdout != gitea_version))
+- include: install.yml
 
 - include: create_user.yml
 
-- name: "Create config and data directory"
+- name: "Create config directory"
   file:
     path: "{{ item }}"
     state: directory
     owner: "{{ gitea_user }}"
-    recurse: True
+    group: "{{ gitea_group }}"
+    mode: '0755'
   with_items:
     - "/etc/gitea"
+
+- name: "Create data directory"
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
+    mode: 'u=rwX,g=rX,o='
+    recurse: true
+  with_items:
     - "{{ gitea_home }}"
     - "{{ gitea_home }}/data"
     - "{{ gitea_home }}/custom"
@@ -39,20 +47,19 @@
     - "{{ gitea_home }}/custom/mailer"
     - "{{ gitea_home }}/indexers"
     - "{{ gitea_home }}/log"
+    - "{{ gitea_repository_root }}"
 
 - include: install_systemd.yml
   when: ansible_service_mgr == "systemd"
 
-- name: 'Install git'
-  package:
-    name: 'git'
-    state: 'present'
+- include_tasks: jwt_secrets.yml
 
 - name: "Configure gitea"
   template:
     src: gitea.ini.j2
     dest: /etc/gitea/gitea.ini
     owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
     mode: 0600
   notify: "Restart gitea"
 

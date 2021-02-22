@@ -58,9 +58,11 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 
 * `gitea_version_check`: Check if installed version != `gitea_version` before initiating binary download
 * `gitea_user`: UNIX user used by Gitea
+* `gitea_group`: UNIX group used by Gitea
 * `gitea_home`: Base directory to work
 * `gitea_dl_url`: The URL, the compiled gitea-binary will be downloaded from
 * `gitea_systemd_cap_net_bind_service`: Adds `AmbientCapabilities=CAP_NET_BIND_SERVICE` to systemd service file
+* `gitea_extra_config`: Additional configuration
 
 ### Look and feel
 
@@ -73,10 +75,13 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_show_registration_button`: Do you want to show the registration button? (true/false)
 * `gitea_require_signin`: Do you require a signin to see repo's (even public ones) ? (true/false)
 * `gitea_enable_captcha`: Do you want to enable captcha's ? (true/false)
-* `gitea_secret_key`: Cookie secret key
-* `gitea_internal_token`: Internal API token
 * `gitea_themes`: List of enabled themes
 * `gitea_theme_default`: Default theme
+
+### Security
+* `gitea_secret_key`: Cookie secret key
+* `gitea_internal_token`: Internal API token
+* `gitea_disable_git_hooks`: Do you want to disable the interface to add git hooks? If enabled it could be a security bug as it can be used for RCE. Defaults to true (true/false)
 
 ### Limits
 
@@ -105,7 +110,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_db_name`: Database name
 * `gitea_db_user`: Database username
 * `gitea_db_password`: Database password
-* `gitea_db_ssl`: Use SSL ? (postgres only!). Can be `required`, `disable`, `verify-full`
+* `gitea_db_ssl`: Use SSL ? (postgres only!). Can be `require`, `disable`, `verify-ca` or `verify-full`
 * `gitea_db_path`: DB path, if you use `sqlite3`. The default is good enough to work though.
 
 ### Mailer configuration
@@ -123,6 +128,13 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_autowatch_on_change`: Enable this to make users watch a repository after their first commit to it (Default: `true`)
 * `gitea_show_mailstones_dashboard`: Enable this to show the milestones dashboard page - a view of all the user’s milestones (Default: `true`)
 
+### LFS configuration
+
+* `gitea_lfs_enabled`: Enable GIT LFS *(git large file storeage: [git-lfs](https://git-lfs.github.com/))*. Default: `false`
+* `gitea_lfs_content_path`: path where the lfs files are stored
+* `gitea_lfs_secret`: JWT secret for remote LFS usage. Can be generated with ``gitea generate secret JWT_SECRET``
+
+
 ### Fail2Ban configuration
 
 If enabled, this will deploy a fail2ban filter and jail config for Gitea as described in the [Gitea Documentation](https://docs.gitea.io/en-us/fail2ban-setup/).
@@ -138,7 +150,7 @@ As this will only deploy config files, fail2ban already has to be installed or o
 ### Oauth2 provider configuration
 
 * `gitea_oauth2_enabled`: Enable the Oauth2 provider (true/false)
-* `gitea_oauth2_jwt_secret`: JWT secret, cannot be longer than 32 characters
+* `gitea_oauth2_jwt_secret`: Oauth2 JWT secret. Can be generated with ``gitea generate secret JWT_SECRET``
 
 ### GIT LFS configuration
 * `gitea_lfs_enabled`: Enable GIT LFS (large filesystem)

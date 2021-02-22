@@ -1,10 +1,13 @@
 ---
-gitea_version: "1.12.4"
+gitea_version: "1.13.2"
 gitea_version_check: true
 gitea_dl_url: "https://github.com/go-gitea/gitea/releases/download/v{{ gitea_version }}/gitea-{{ gitea_version }}-linux-{{ gitea_arch }}"
+gitea_gpg_key: "7C9E68152594688862D62AF62D9AE806EC1592E2"
+gitea_gpg_server: "hkp://keyserver.ubuntu.com:80"
 
 gitea_app_name: "Gitea"
 gitea_user: "gitea"
+gitea_group: "gitea"
 gitea_home: "/var/lib/gitea"
 gitea_shell: "/bin/false"
 gitea_systemd_cap_net_bind_service: false
@@ -21,9 +24,13 @@ gitea_disable_http_git: false
 gitea_offline_mode: true
 
 gitea_lfs_server_enabled: false
+
 gitea_lfs_content_path: "data/lfs"
 gitea_lfs_secret: SomethingVeryLong
 gitea_lfs_mode: true
+gitea_lfs_content_path: "{{ gitea_home }}/data/lfs"
+gitea_lfs_jwt_secret: ''
+
 
 gitea_db_type: sqlite3
 gitea_db_host: 127.0.0.0:3306
@@ -40,6 +47,7 @@ gitea_ssh_port: 2222
 
 gitea_secret_key: T0pS3cr31
 gitea_internal_token: SomethingVeryLong
+gitea_disable_git_hooks: true
 
 gitea_show_user_email: false
 gitea_disable_gravatar: true
@@ -72,7 +80,7 @@ gitea_fail2ban_jail_bantime: 900
 gitea_fail2ban_jail_action: iptables-allports
 
 gitea_oauth2_enabled: true
-gitea_oauth2_jwt_secret: ChangeMe
+gitea_oauth2_jwt_secret: ''
 
 gitea_metrics_enabled: false
 gitea_metrics_token: ~
@@ -85,3 +93,5 @@ gitea_repo_indexer_include: ""
 gitea_repo_indexer_exclude: ""
 gitea_repo_exclude_vendored: true
 gitea_repo_indexer_max_file_size: 1048576
+
+gitea_extra_config: ""

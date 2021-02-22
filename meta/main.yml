@@ -2,7 +2,7 @@
 galaxy_info:
   author: Thomas Maurice
   description: Ansible Role - Gitea
-  min_ansible_version: 2.7.9
+  min_ansible_version: 2.9.8
   license: BSD-3-Clause
   galaxy_tags:
     - git
@@ -16,12 +16,17 @@ galaxy_info:
   platforms:
     - name: Debian
       versions:
-        - jessie
         - stretch
-    - name: EL
-      versions:
-        - 7
+        - buster
     - name: Ubuntu
       versions:
         - xenial
         - bionic
+        - focal
+    - name: CentOS
+      versions:
+        - 7
+        - 8
+    - name: Fedora
+      versions:
+        - 33
