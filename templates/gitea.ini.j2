@@ -57,11 +57,12 @@ APP_DATA_PATH    = {{ gitea_home }}/data
 ;Enables git-lfs support.
 LFS_START_SERVER = true
 ; Where to store LFS files.
-LFS_CONTENT_PATH = {{ gitea_lfs_content_path }}
-; LFS authentication secret
-LFS_JWT_SECRET   = {{ gitea_lfs_jwt_secret }}
-{% endif %}
 
+LFS_CONTENT_PATH      = {{ gitea_lfs_content_path }}
+; if the LFS sotre is not offline/local
+LFS_JWT_SECRET       = {{ gitea_lfs_secret }} 
+OFFLINE_MODE         = {{ gitea_lfs_mode }}
+{%- endif %}
 [database]
 ; Either "mysql", "postgres", "mssql" or "sqlite3", it's your choice
 DB_TYPE  = {{ gitea_db_type }}
@@ -118,7 +119,11 @@ RECAPTCHA_SITEKEY                =
 ; Show Registration button
 SHOW_REGISTRATION_BUTTON         = {{ gitea_show_registration_button }}
 ALLOW_ONLY_EXTERNAL_REGISTRATION = {{ gitea_only_allow_external_registration }}
-ENABLE_NOTIFY_MAIL               = {{ gitea_enable_notify_mail }}
+ENABLE_NOTIFY_MAIL = {{ gitea_enable_notify_mail }}
+DEFAULT_EMAIL_NOTIFICATIONS       = {{ gitea_mail_default }} 
+AUTO_WATCH_NEW_REPOS              = {{ gitea_autowatch_new_repo }} 
+AUTO_WATCH_ON_CHANGES             = {{ gitea_autowatch_on_change }} 
+SHOW_MILESTONES_DASHBOARD_PAGE    = {{ gitea_show_mailstones_dashboard }} 
 
 [mailer]
 ENABLED            = {{ gitea_mailer_enabled }}
