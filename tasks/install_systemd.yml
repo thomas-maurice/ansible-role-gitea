@@ -1,6 +1,6 @@
 ---
 - name: "Setup systemd service"
-  template:
+  ansible.builtin.template:
     src: gitea.service.j2
     dest: /lib/systemd/system/gitea.service
     owner: root
@@ -12,5 +12,5 @@
 
 # systemd to be reloaded the first time because it is the only way Systemd is going to be aware of the new unit file.
 - name: "Reload systemd"
-  systemd:
+  ansible.builtin.systemd:
     daemon_reload: true
