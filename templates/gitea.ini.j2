@@ -1,200 +1,197 @@
 ; this file is the configuration of your local gitea instance
 ; {{ ansible_managed }}
-;
+; 
 ; This file overwrites the default values from gitea.
 ; undefined variables will use the default value from gitea.
 ; Cheat Sheet: https://docs.gitea.io/en-us/config-cheat-sheet/
-;
+; 
 ; App name that shows on every page title
-APP_NAME = {{ gitea_app_name }}
+APP_NAME = {{ gitea_app_name }}
 ; Change it if you run locally
 RUN_USER = {{ gitea_user }}
 ; Either "dev", "prod" or "test", default is "dev"
 RUN_MODE = prod
 
 [repository]
-ROOT                  = {{ gitea_repository_root }}
+ROOT                = {{ gitea_repository_root }}
 ; Force every new repository to be private
-FORCE_PRIVATE         = {{ gitea_force_private }}
+FORCE_PRIVATE       = {{ gitea_force_private }}
 ; Global limit of repositories per user, applied at creation time. -1 means no limit
-MAX_CREATION_LIMIT    = {{ gitea_user_repo_limit }}
+MAX_CREATION_LIMIT  = {{ gitea_user_repo_limit }}
 ; Mirror sync queue length, increase if mirror syncing starts hanging
 MIRROR_QUEUE_LENGTH = 1000
 ; Disable the ability to interact with repositories using the HTTP protocol
-DISABLE_HTTP_GIT      = {{ gitea_disable_http_git }}
+DISABLE_HTTP_GIT    = {{ gitea_disable_http_git }}
 
 [ui]
 ; Whether the email of the user should be shown in the Explore Users page
-SHOW_USER_EMAIL       = {{ gitea_show_user_email }}
-THEMES                = {{ gitea_themes }}
-DEFAULT_THEME         = {{ gitea_theme_default }}
+SHOW_USER_EMAIL = {{ gitea_show_user_email }}
+THEMES          = {{ gitea_themes }}
+DEFAULT_THEME   = {{ gitea_theme_default }}
 
 [server]
 ; The protocol the server listens on. One of 'http', 'https', 'unix' or 'fcgi'.
-PROTOCOL              = {{ gitea_protocol }}
-DOMAIN                = {{ gitea_http_domain }}
-ROOT_URL              = {{ gitea_root_url }}
+PROTOCOL         = {{ gitea_protocol }}
+DOMAIN           = {{ gitea_http_domain }}
+ROOT_URL         = {{ gitea_root_url }}
 ; The address to listen on. Either a IPv4/IPv6 address or the path to a unix socket.
-HTTP_ADDR             = {{ gitea_http_listen }}
-HTTP_PORT             = {{ gitea_http_port }}
+HTTP_ADDR        = {{ gitea_http_listen }}
+HTTP_PORT        = {{ gitea_http_port }}
 ; Disable SSH feature when not available
-DISABLE_SSH = false
+DISABLE_SSH      = false
 ; Whether to use the builtin SSH server or not.
-START_SSH_SERVER      = {{ gitea_start_ssh }}
+START_SSH_SERVER = {{ gitea_start_ssh }}
 ; Domain name to be exposed in clone URL
-SSH_DOMAIN            = {{ gitea_ssh_domain }}
+SSH_DOMAIN       = {{ gitea_ssh_domain }}
 ; The network interface the builtin SSH server should listen on
-SSH_LISTEN_HOST       = {{ gitea_ssh_listen }}
+SSH_LISTEN_HOST  = {{ gitea_ssh_listen }}
 ; Port number to be exposed in clone URL
-SSH_PORT              = {{ gitea_ssh_port }}
+SSH_PORT         = {{ gitea_ssh_port }}
 ; The port number the builtin SSH server should listen on
-SSH_LISTEN_PORT       = %(SSH_PORT)s
+SSH_LISTEN_PORT  = %(SSH_PORT)s
 ; Disable CDN even in "prod" mode
-OFFLINE_MODE          = {{ gitea_offline_mode }}
+OFFLINE_MODE     = {{ gitea_offline_mode }}
 ; Default path for App data
-APP_DATA_PATH         = {{ gitea_home }}/data
-{%- if gitea_lfs_server_enabled | bool %}
+APP_DATA_PATH    = {{ gitea_home }}/data
+{% if gitea_lfs_server_enabled | bool -%}
 ;Enables git-lfs support.
-LFS_START_SERVER      = true
+LFS_START_SERVER = true
 ; Where to store LFS files.
-LFS_CONTENT_PATH      = {{ gitea_lfs_content_path }}
+LFS_CONTENT_PATH = {{ gitea_lfs_content_path }}
 ; LFS authentication secret
-LFS_JWT_SECRET        = {{ gitea_lfs_jwt_secret }}
-
-{%- endif %}
+LFS_JWT_SECRET   = {{ gitea_lfs_jwt_secret }}
+{% endif %}
 
 [database]
 ; Either "mysql", "postgres", "mssql" or "sqlite3", it's your choice
-DB_TYPE               = {{ gitea_db_type }}
-HOST                  = {{ gitea_db_host }}
-NAME                  = {{ gitea_db_name }}
-USER                  = {{ gitea_db_user }}
+DB_TYPE  = {{ gitea_db_type }}
+HOST     = {{ gitea_db_host }}
+NAME     = {{ gitea_db_name }}
+USER     = {{ gitea_db_user }}
 ; Use PASSWD = `your password` for quoting if you use special characters in the password.
-PASSWD                = {{ gitea_db_password }}
-; For Postgres, either "disable" (default), "require", or "verify-full"
+PASSWD   = {{ gitea_db_password }}
+; For Postgres, either "disable" (default), "require", "verify-ca" or "verify-full"
 ; For MySQL, either "false" (default), "true", or "skip-verify"
-SSL_MODE              = {{ gitea_db_ssl }}
+SSL_MODE = {{ gitea_db_ssl }}
 ; For "sqlite3" and "tidb", use an absolute path when you start gitea as service
-PATH                  = {{ gitea_db_path }}
+PATH     = {{ gitea_db_path }}
 
 [indexer]
 ; Issue indexer storage path, available when ISSUE_INDEXER_TYPE is bleve
-ISSUE_INDEXER_PATH    = {{ gitea_home }}/indexers/issues.bleve
+ISSUE_INDEXER_PATH            = {{ gitea_home }}/indexers/issues.bleve
 ; Issue indexer queue, currently support: channel or levelqueue, default is levelqueue
-ISSUE_INDEXER_QUEUE_TYPE = levelqueue
+ISSUE_INDEXER_QUEUE_TYPE      = levelqueue
 ; When ISSUE_INDEXER_QUEUE_TYPE is levelqueue, this will be the queue will be saved path,
 ; default is indexers/issues.queue
-ISSUE_INDEXER_QUEUE_DIR = {{ gitea_home }}/indexers/issues.queue
-
+ISSUE_INDEXER_QUEUE_DIR       = {{ gitea_home }}/indexers/issues.queue
 ; repo indexer by default disabled, since it uses a lot of disk space
-REPO_INDEXER_ENABLED = {{ gitea_repo_indexer_enabled }}
-REPO_INDEXER_PATH       = {{ gitea_home }}/indexers/repos.bleve
-REPO_INDEXER_INCLUDE = {{ gitea_repo_indexer_include }}
-REPO_INDEXER_EXCLUDE = {{ gitea_repo_indexer_exclude }}
+REPO_INDEXER_ENABLED          = {{ gitea_repo_indexer_enabled }}
+REPO_INDEXER_PATH             = {{ gitea_home }}/indexers/repos.bleve
+REPO_INDEXER_INCLUDE          = {{ gitea_repo_indexer_include }}
+REPO_INDEXER_EXCLUDE          = {{ gitea_repo_indexer_exclude }}
 REPO_INDEXER_EXCLUDE_VENDORED = {{ gitea_repo_exclude_vendored }}
-MAX_FILE_SIZE = {{ gitea_repo_indexer_max_file_size }}
+MAX_FILE_SIZE                 = {{ gitea_repo_indexer_max_file_size }}
 
 [security]
 ; Whether the installer is disabled
-INSTALL_LOCK = true
+INSTALL_LOCK        = true
 ; !!CHANGE THIS TO KEEP YOUR USER DATA SAFE!!
-SECRET_KEY              = {{ gitea_secret_key }}
-INTERNAL_TOKEN          = {{ gitea_internal_token }}
+SECRET_KEY          = {{ gitea_secret_key }}
+INTERNAL_TOKEN      = {{ gitea_internal_token }}
 ; How long to remember that an user is logged in before requiring relogin (in days)
 LOGIN_REMEMBER_DAYS = 7
-DISABLE_GIT_HOOKS       = {{ gitea_disable_git_hooks }}
+DISABLE_GIT_HOOKS   = {{ gitea_disable_git_hooks }}
 
 [service]
 ; Disallow registration, only allow admins to create accounts.
-DISABLE_REGISTRATION    = {{ gitea_disable_registration }}
+DISABLE_REGISTRATION             = {{ gitea_disable_registration }}
 ; User must sign in to view anything.
-REQUIRE_SIGNIN_VIEW     = {{ gitea_require_signin }}
+REQUIRE_SIGNIN_VIEW              = {{ gitea_require_signin }}
 ; Enable captcha validation for registration
-ENABLE_CAPTCHA          = {{ gitea_enable_captcha }}
+ENABLE_CAPTCHA                   = {{ gitea_enable_captcha }}
 ; Type of captcha you want to use. Options: image, recaptcha
-CAPTCHA_TYPE = image
+CAPTCHA_TYPE                     = image
 ; Enable recaptcha to use Google's recaptcha service
 ; Go to https://www.google.com/recaptcha/admin to sign up for a key
-RECAPTCHA_SECRET  =
-RECAPTCHA_SITEKEY =
+RECAPTCHA_SECRET                 = 
+RECAPTCHA_SITEKEY                = 
 ; Show Registration button
-SHOW_REGISTRATION_BUTTON = {{ gitea_show_registration_button }}
+SHOW_REGISTRATION_BUTTON         = {{ gitea_show_registration_button }}
 ALLOW_ONLY_EXTERNAL_REGISTRATION = {{ gitea_only_allow_external_registration }}
-ENABLE_NOTIFY_MAIL = {{ gitea_enable_notify_mail }}
+ENABLE_NOTIFY_MAIL               = {{ gitea_enable_notify_mail }}
 
 [mailer]
-ENABLED                 = {{ gitea_mailer_enabled }}
+ENABLED            = {{ gitea_mailer_enabled }}
 ; Mail server
 ; Gmail: smtp.gmail.com:587
 ; QQ: smtp.qq.com:465
 ; Note, if the port ends with "465", SMTPS will be used. Using STARTTLS on port 587 is recommended per RFC 6409. If the server supports STARTTLS it will always be used.
-HOST                    = {{ gitea_mailer_host }}
+HOST               = {{ gitea_mailer_host }}
 ; Disable HELO operation when hostnames are different.
-DISABLE_HELO =
+DISABLE_HELO       = 
 ; Custom hostname for HELO operation, if no value is provided, one is retrieved from system.
-HELO_HOSTNAME =
+HELO_HOSTNAME      = 
 ; Do not verify the certificate of the server. Only use this for self-signed certificates
-SKIP_VERIFY             = {{ gitea_mailer_skip_verify }}
+SKIP_VERIFY        = {{ gitea_mailer_skip_verify }}
 ; Use client certificate
-USE_CERTIFICATE = false
-CERT_FILE               = {{ gitea_home }}/custom/mailer/cert.pem
-KEY_FILE                = {{ gitea_home }}/custom/mailer/key.pem
+USE_CERTIFICATE    = false
+CERT_FILE          = {{ gitea_home }}/custom/mailer/cert.pem
+KEY_FILE           = {{ gitea_home }}/custom/mailer/key.pem
 ; Should SMTP connection use TLS
-IS_TLS_ENABLED = {{ gitea_mailer_tls_enabled }}
+IS_TLS_ENABLED     = {{ gitea_mailer_tls_enabled }}
 ; Mail from address, RFC 5322. This can be just an email address, or the `"Name" <email@example.com>` format
-FROM                    = {{ gitea_mailer_from }}
+FROM               = {{ gitea_mailer_from }}
 ; Mailer user name and password
-USER                    = {{ gitea_mailer_user }}
+USER               = {{ gitea_mailer_user }}
 ; Use PASSWD = `your password` for quoting if you use special characters in the password.
-PASSWD                  = `{{ gitea_mailer_password }}`
+PASSWD             = {{ gitea_mailer_password }}
 ; Send mails as plain text
 SEND_AS_PLAIN_TEXT = false
 ; Set Mailer Type (either SMTP, sendmail or dummy to just send to the log)
-MAILER_TYPE = {{ gitea_mailer_type }}
+MAILER_TYPE        = {{ gitea_mailer_type }}
 ; Specify an alternative sendmail binary
-SENDMAIL_PATH = sendmail
+SENDMAIL_PATH      = sendmail
 ; Specify any extra sendmail arguments
-SENDMAIL_ARGS =
-
+SENDMAIL_ARGS      = 
 
 [session]
 ; Either "memory", "file", or "redis", default is "memory"
-PROVIDER = file
+PROVIDER        = file
 ; Provider config options
 ; memory: doesn't have any config yet
 ; file: session file path, e.g. `data/sessions`
 ; redis: network=tcp,addr=:6379,password=macaron,db=0,pool_size=100,idle_timeout=180
 ; mysql: go-sql-driver/mysql dsn config string, e.g. `root:password@/session_table`
-PROVIDER_CONFIG         = {{ gitea_home }}/data/sessions
+PROVIDER_CONFIG = {{ gitea_home }}/data/sessions
 
 [picture]
-AVATAR_UPLOAD_PATH      = {{ gitea_home }}/data/avatars
+AVATAR_UPLOAD_PATH = {{ gitea_home }}/data/avatars
 ; This value will always be true in offline mode.
-DISABLE_GRAVATAR        = {{ gitea_disable_gravatar }}
+DISABLE_GRAVATAR   = {{ gitea_disable_gravatar }}
 
 [attachment]
 ; Whether attachments are enabled. Defaults to `true`
 ENABLED = true
 ; Path for attachments. Defaults to `data/attachments`
-PATH                    = {{ gitea_home }}/data/attachments
+PATH    = {{ gitea_home }}/data/attachments
 
 [log]
-ROOT_PATH               = {{ gitea_home }}/log
+ROOT_PATH            = {{ gitea_home }}/log
 ; Either "console", "file", "conn", "smtp" or "database", default is "console"
 ; Use comma to separate multiple modes, e.g. "console, file"
-MODE       = file
+MODE                 = file
 ; Buffer length of the channel, keep it as it is if you don't know what it is.
-BUFFER_LEN = 10000
+BUFFER_LEN           = 10000
 ; Either "Trace", "Debug", "Info", "Warn", "Error", "Critical", default is "Trace"
-LEVEL      = Info
+LEVEL                = Info
 REDIRECT_MACARON_LOG = false
 
 [oauth2]
-ENABLE = {{ gitea_oauth2_enabled }}
+ENABLE     = {{ gitea_oauth2_enabled }}
 JWT_SECRET = {{ gitea_oauth2_jwt_secret }}
 
 [metrics]
 ENABLED = {{ gitea_metrics_enabled }}
-TOKEN = {{ gitea_metrics_token }}
+TOKEN   = {{ gitea_metrics_token }}
 
 {{ gitea_extra_config }}
