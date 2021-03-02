@@ -110,7 +110,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_db_name`: Database name
 * `gitea_db_user`: Database username
 * `gitea_db_password`: Database password
-* `gitea_db_ssl`: Use SSL ? (postgres only!). Can be `required`, `disable`, `verify-full`
+* `gitea_db_ssl`: Use SSL ? (postgres only!). Can be `require`, `disable`, `verify-ca` or `verify-full`
 * `gitea_db_path`: DB path, if you use `sqlite3`. The default is good enough to work though.
 
 ### Mailer configuration

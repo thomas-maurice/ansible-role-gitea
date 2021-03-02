@@ -1,10 +1,10 @@
 ; this file is the configuration of your local gitea instance
 ; {{ ansible_managed }}
-; 
+;
 ; This file overwrites the default values from gitea.
 ; undefined variables will use the default value from gitea.
 ; Cheat Sheet: https://docs.gitea.io/en-us/config-cheat-sheet/
-; 
+;
 ; App name that shows on every page title
 APP_NAME = {{ gitea_app_name }}
 ; Change it if you run locally
@@ -15,17 +15,17 @@ RUN_MODE = prod
 [repository]
 ROOT                = {{ gitea_repository_root }}
 ; Force every new repository to be private
-FORCE_PRIVATE       = {{ gitea_force_private }}
+FORCE_PRIVATE       = {{ gitea_force_private | ternary('true', 'false') }}
 ; Global limit of repositories per user, applied at creation time. -1 means no limit
 MAX_CREATION_LIMIT  = {{ gitea_user_repo_limit }}
 ; Mirror sync queue length, increase if mirror syncing starts hanging
 MIRROR_QUEUE_LENGTH = 1000
 ; Disable the ability to interact with repositories using the HTTP protocol
-DISABLE_HTTP_GIT    = {{ gitea_disable_http_git }}
+DISABLE_HTTP_GIT    = {{ gitea_disable_http_git | ternary('true', 'false') }}
 
 [ui]
 ; Whether the email of the user should be shown in the Explore Users page
-SHOW_USER_EMAIL = {{ gitea_show_user_email }}
+SHOW_USER_EMAIL = {{ gitea_show_user_email | ternary('true', 'false') }}
 THEMES          = {{ gitea_themes }}
 DEFAULT_THEME   = {{ gitea_theme_default }}
 
@@ -40,7 +40,7 @@ HTTP_PORT        = {{ gitea_http_port }}
 ; Disable SSH feature when not available
 DISABLE_SSH      = false
 ; Whether to use the builtin SSH server or not.
-START_SSH_SERVER = {{ gitea_start_ssh }}
+START_SSH_SERVER = {{ gitea_start_ssh | ternary('true', 'false') }}
 ; Domain name to be exposed in clone URL
 SSH_DOMAIN       = {{ gitea_ssh_domain }}
 ; The network interface the builtin SSH server should listen on
@@ -50,7 +50,7 @@ SSH_PORT         = {{ gitea_ssh_port }}
 ; The port number the builtin SSH server should listen on
 SSH_LISTEN_PORT  = %(SSH_PORT)s
 ; Disable CDN even in "prod" mode
-OFFLINE_MODE     = {{ gitea_offline_mode }}
+OFFLINE_MODE     = {{ gitea_offline_mode | ternary('true', 'false') }}
 ; Default path for App data
 APP_DATA_PATH    = {{ gitea_home }}/data
 {% if gitea_lfs_server_enabled | bool -%}
@@ -70,7 +70,7 @@ NAME     = {{ gitea_db_name }}
 USER     = {{ gitea_db_user }}
 ; Use PASSWD = `your password` for quoting if you use special characters in the password.
 PASSWD   = {{ gitea_db_password }}
-; For Postgres, either "disable" (default), "require", or "verify-full"
+; For Postgres, either "disable" (default), "require", "verify-ca" or "verify-full"
 ; For MySQL, either "false" (default), "true", or "skip-verify"
 SSL_MODE = {{ gitea_db_ssl }}
 ; For "sqlite3" and "tidb", use an absolute path when you start gitea as service
@@ -100,37 +100,33 @@ SECRET_KEY          = {{ gitea_secret_key }}
 INTERNAL_TOKEN      = {{ gitea_internal_token }}
 ; How long to remember that an user is logged in before requiring relogin (in days)
 LOGIN_REMEMBER_DAYS = 7
-DISABLE_GIT_HOOKS   = {{ gitea_disable_git_hooks }}
+DISABLE_GIT_HOOKS   = {{ gitea_disable_git_hooks | ternary('true', 'false') }}
 
 [service]
 ; Disallow registration, only allow admins to create accounts.
 DISABLE_REGISTRATION             = {{ gitea_disable_registration }}
 ; User must sign in to view anything.
-REQUIRE_SIGNIN_VIEW              = {{ gitea_require_signin }}
+REQUIRE_SIGNIN_VIEW              = {{ gitea_require_signin | ternary('true', 'false') }}
 ; Enable captcha validation for registration
-ENABLE_CAPTCHA                   = {{ gitea_enable_captcha }}
+ENABLE_CAPTCHA                   = {{ gitea_enable_captcha | ternary('true', 'false') }}
 ; Type of captcha you want to use. Options: image, recaptcha
 CAPTCHA_TYPE                     = image
 ; Enable recaptcha to use Google's recaptcha service
 ; Go to https://www.google.com/recaptcha/admin to sign up for a key
-RECAPTCHA_SECRET                 = 
-RECAPTCHA_SITEKEY                = 
+RECAPTCHA_SECRET                 =
+RECAPTCHA_SITEKEY                =
 ; Show Registration button
-SHOW_REGISTRATION_BUTTON         = {{ gitea_show_registration_button }}
-ALLOW_ONLY_EXTERNAL_REGISTRATION = {{ gitea_only_allow_external_registration }}
-ENABLE_NOTIFY_MAIL               = {{ gitea_enable_notify_mail }}
+SHOW_REGISTRATION_BUTTON         = {{ gitea_show_registration_button | ternary('true', 'false') }}
+ALLOW_ONLY_EXTERNAL_REGISTRATION = {{ gitea_only_allow_external_registration | ternary('true', 'false') }}
+ENABLE_NOTIFY_MAIL               = {{ gitea_enable_notify_mail | ternary('true', 'false') }}
 
 [mailer]
-ENABLED            = {{ gitea_mailer_enabled }}
+ENABLED            = {{ gitea_mailer_enabled | ternary('true', 'false') }}
 ; Mail server
 ; Gmail: smtp.gmail.com:587
 ; QQ: smtp.qq.com:465
 ; Note, if the port ends with "465", SMTPS will be used. Using STARTTLS on port 587 is recommended per RFC 6409. If the server supports STARTTLS it will always be used.
 HOST               = {{ gitea_mailer_host }}
-; Disable HELO operation when hostnames are different.
-DISABLE_HELO       = 
-; Custom hostname for HELO operation, if no value is provided, one is retrieved from system.
-HELO_HOSTNAME      = 
 ; Do not verify the certificate of the server. Only use this for self-signed certificates
 SKIP_VERIFY        = {{ gitea_mailer_skip_verify }}
 ; Use client certificate
@@ -138,7 +134,7 @@ USE_CERTIFICATE    = false
 CERT_FILE          = {{ gitea_home }}/custom/mailer/cert.pem
 KEY_FILE           = {{ gitea_home }}/custom/mailer/key.pem
 ; Should SMTP connection use TLS
-IS_TLS_ENABLED     = {{ gitea_mailer_tls_enabled }}
+IS_TLS_ENABLED     = {{ gitea_mailer_tls_enabled | ternary('true', 'false') }}
 ; Mail from address, RFC 5322. This can be just an email address, or the `"Name" <email@example.com>` format
 FROM               = {{ gitea_mailer_from }}
 ; Mailer user name and password
@@ -151,8 +147,6 @@ SEND_AS_PLAIN_TEXT = false
 MAILER_TYPE        = {{ gitea_mailer_type }}
 ; Specify an alternative sendmail binary
 SENDMAIL_PATH      = sendmail
-; Specify any extra sendmail arguments
-SENDMAIL_ARGS      = 
 
 [session]
 ; Either "memory", "file", or "redis", default is "memory"
@@ -167,7 +161,7 @@ PROVIDER_CONFIG = {{ gitea_home }}/data/sessions
 [picture]
 AVATAR_UPLOAD_PATH = {{ gitea_home }}/data/avatars
 ; This value will always be true in offline mode.
-DISABLE_GRAVATAR   = {{ gitea_disable_gravatar }}
+DISABLE_GRAVATAR   = {{ gitea_disable_gravatar | ternary('true', 'false') }}
 
 [attachment]
 ; Whether attachments are enabled. Defaults to `true`
@@ -183,7 +177,7 @@ MODE                 = file
 ; Buffer length of the channel, keep it as it is if you don't know what it is.
 BUFFER_LEN           = 10000
 ; Either "Trace", "Debug", "Info", "Warn", "Error", "Critical", default is "Trace"
-LEVEL                = Info
+LEVEL                = {{ gitea_log_level }}
 REDIRECT_MACARON_LOG = false
 
 [oauth2]
