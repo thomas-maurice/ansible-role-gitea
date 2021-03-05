@@ -23,9 +23,8 @@
         cmd: "gitea dump -c /etc/gitea/gitea.ini"
         chdir: "{{ gitea_backup_location }}"
       become: true
-      become_method: su
+      become_method: sudo
       become_user: "{{ gitea_user }}"
-      become_flags: "-s /bin/sh"
   when:
     - ansible_facts.services["gitea.service"] is defined
     - ansible_facts.services["gitea.service"].state == "running"
