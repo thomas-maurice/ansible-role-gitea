@@ -20,10 +20,9 @@
 
     - name: Backing up gitea before upgrade
       command:
-        cmd: "gitea dump -c /etc/gitea/gitea.ini"
+        cmd: "/usr/local/bin/gitea dump -c /etc/gitea/gitea.ini"
         chdir: "{{ gitea_backup_location }}"
       become: true
-      become_method: sudo
       become_user: "{{ gitea_user }}"
   when:
     - ansible_facts.services["gitea.service"] is defined
