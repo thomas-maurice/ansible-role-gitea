@@ -88,3 +88,6 @@ gitea_repo_indexer_max_file_size: 1048576
 gitea_log_level: Info
 
 gitea_extra_config: ""
+
+gitea_backup_on_upgrade: false
+gitea_backup_location: "{{ gitea_home }}/backups/"
