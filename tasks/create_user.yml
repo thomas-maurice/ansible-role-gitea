@@ -5,6 +5,10 @@
     system: true
     state: "present"
 
+- name: "If the system sshd ist used, we must not use /bin/false use the normal /bin/sh. "
+  set_fact:
+    gitea_shell: "/bin/sh"
+
 - name: "Create Gitea user"
   user:
     name: "{{ gitea_user }}"
