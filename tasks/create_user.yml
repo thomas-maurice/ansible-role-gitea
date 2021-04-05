@@ -4,10 +4,12 @@
     name: "{{ gitea_group }}"
     system: true
     state: "present"
-
-- name: "If the system sshd ist used, we must not use /bin/false use the normal /bin/sh. "
+    
+# If the system sshd ist used, we must not use /bin/false. Instead use the normal /bin/sh to enable gitea to run its commands
+- name: Switch shell when not using the builtin ssh server
   set_fact:
     gitea_shell: "/bin/sh"
+  when: "not gitea_start_ssh"
 
 - name: "Create Gitea user"
   user:
