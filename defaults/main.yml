@@ -3,7 +3,7 @@ gitea_version: "1.13.6"
 gitea_version_check: true
 gitea_dl_url: "https://github.com/go-gitea/gitea/releases/download/v{{ gitea_version }}/gitea-{{ gitea_version }}-linux-{{ gitea_arch }}"
 gitea_gpg_key: "7C9E68152594688862D62AF62D9AE806EC1592E2"
-gitea_gpg_server: "hkp://keys.openpgp.org"
+gitea_gpg_server: "hkps://keys.openpgp.org"
 
 gitea_app_name: "Gitea"
 gitea_user: "gitea"
