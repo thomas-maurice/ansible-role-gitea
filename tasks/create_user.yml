@@ -6,7 +6,7 @@
     state: "present"
 
 - name: "Create Gitea user"
-  user:
+  ansible.builtin.user:
     name: "{{ gitea_user }}"
     comment: "Gitea user"
     home: "{{ gitea_home }}"
