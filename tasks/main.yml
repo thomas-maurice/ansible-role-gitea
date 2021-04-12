@@ -8,6 +8,10 @@
     - "{{ ansible_distribution | lower }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
 
+- name: Gather installed packages for checks in the role (fail2ban)
+  ansible.builtin.package_facts:
+    manager: auto
+
 - name: "Check gitea version"
   ansible.builtin.shell: "set -eo pipefail; /usr/local/bin/gitea -v | cut -d' ' -f 3"
   args:

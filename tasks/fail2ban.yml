@@ -7,6 +7,7 @@
     group: root
     mode: 0444
   notify: Restart fail2ban
+  when: "'fail2ban' in ansible_facts.packages"
 
 - name: Install fail2ban jail
   ansible.builtin.template:
@@ -16,3 +17,10 @@
     group: root
     mode: 0444
   notify: Restart fail2ban
+  when: "'fail2ban' in ansible_facts.packages"
+
+- name: warn if fail2ban is not installed
+  ansible.builtin.fail:
+    msg: "the package fail2ban is not installed. no fail2ban filters deployed."
+  when: "'fail2ban' not in ansible_facts.packages"
+  ignore_errors: true
