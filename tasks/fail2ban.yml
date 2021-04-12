@@ -7,6 +7,7 @@
     group: root
     mode: 0444
   notify: Restart fail2ban
+  when: "'fail2ban' in ansible_facts.packages"  
 
 - name: Install fail2ban jail
   template:
@@ -16,3 +17,4 @@
     group: root
     mode: 0444
   notify: Restart fail2ban
+  when: "'fail2ban' in ansible_facts.packages"  
