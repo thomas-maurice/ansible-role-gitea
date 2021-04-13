@@ -8,8 +8,12 @@
     - "{{ ansible_distribution | lower }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
 
+- name: Gather installed packages for checks in the role (fail2ban)
+  ansible.builtin.package_facts:
+    manager: auto
+
 - name: "Check gitea version"
-  shell: "set -eo pipefail; /usr/local/bin/gitea -v | cut -d' ' -f 3"
+  ansible.builtin.shell: "set -eo pipefail; /usr/local/bin/gitea -v | cut -d' ' -f 3"
   args:
     executable: /bin/bash
   register: gitea_active_version
@@ -17,17 +21,21 @@
   failed_when: false
   when: gitea_version_check|bool
 
-- name: backup gitea before update
-  include_tasks: backup.yml
-  when: gitea_backup_on_upgrade|bool
-
-- name: install or update gitea
-  include_tasks: install.yml
+- name: "Download the binary"
+  ansible.builtin.get_url:
+    url: "{{ gitea_dl_url }}"
+    dest: /usr/local/bin/gitea
+    owner: root
+    group: root
+    mode: 0755
+    force: true
+  notify: "Restart gitea"
+  when: (not gitea_version_check|bool) or (not ansible_check_mode and (gitea_active_version.stdout != gitea_version))
 
 - include: create_user.yml
 
-- name: "Create config directory"
-  file:
+- name: "Create config and data directory"
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     owner: "{{ gitea_user }}"
@@ -58,9 +66,13 @@
   when: ansible_service_mgr == "systemd"
 
 - include_tasks: jwt_secrets.yml
+- name: 'Install git'
+  ansible.builtin.package:
+    name: 'git'
+    state: 'present'
 
 - name: "Configure gitea"
-  template:
+  ansible.builtin.template:
     src: gitea.ini.j2
     dest: /etc/gitea/gitea.ini
     owner: "{{ gitea_user }}"
@@ -69,7 +81,7 @@
   notify: "Restart gitea"
 
 - name: "Service gitea"
-  service:
+  ansible.builtin.service:
     name: gitea
     state: started
     enabled: true
