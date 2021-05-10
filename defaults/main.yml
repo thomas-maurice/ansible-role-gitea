@@ -1,5 +1,5 @@
 ---
-gitea_version: "1.14.1"
+gitea_version: "1.14.2"
 gitea_version_check: true
 gitea_dl_url: "https://github.com/go-gitea/gitea/releases/download/v{{ gitea_version }}/gitea-{{ gitea_version }}-linux-{{ gitea_arch }}"
 gitea_gpg_key: "7C9E68152594688862D62AF62D9AE806EC1592E2"
