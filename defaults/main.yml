@@ -20,6 +20,7 @@ gitea_root_url: http://localhost:3000
 gitea_protocol: http
 gitea_http_listen: 127.0.0.1
 gitea_http_port: 3000
+# gitea_http_letsencrypt_mail:  - required
 gitea_disable_http_git: false
 gitea_offline_mode: true
 
@@ -50,6 +51,7 @@ gitea_disable_git_hooks: true
 gitea_show_user_email: false
 gitea_disable_gravatar: true
 gitea_disable_registration: false
+gitea_register_email_confirm: false
 gitea_show_registration_button: true
 gitea_require_signin: true
 gitea_enable_captcha: true
@@ -69,7 +71,11 @@ gitea_mailer_host: localhost:25
 gitea_mailer_from: noreply@your.domain
 gitea_mailer_user: ""
 gitea_mailer_password: ""
+gitea_subject_prefix: ""
 gitea_mailer_type: smtp
+
+gitea_log_systemd: false
+gitea_log_only_warning: true
 
 gitea_fail2ban_enabled: false
 gitea_fail2ban_jail_maxretry: 10

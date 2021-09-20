@@ -35,8 +35,16 @@ PROTOCOL         = {{ gitea_protocol }}
 DOMAIN           = {{ gitea_http_domain }}
 ROOT_URL         = {{ gitea_root_url }}
 ; The address to listen on. Either a IPv4/IPv6 address or the path to a unix socket.
-HTTP_ADDR        = {{ gitea_http_listen }}
-HTTP_PORT        = {{ gitea_http_port }}
+HTTP_ADDR             = {{ gitea_http_listen }}
+HTTP_PORT             = {{ gitea_http_port }}
+{% if gitea_http_port == 443 %}
+PORT_TO_REDIRECT      = 80
+{% endif %}
+{% if gitea_http_letsencrypt_mail is defined %}
+ENABLE_LETSENCRYPT    = true
+LETSENCRYPT_ACCEPTTOS = true
+LETSENCRYPT_EMAIL     = {{ gitea_http_letsencrypt_mail }}
+{% endif %}
 ; Disable SSH feature when not available
 DISABLE_SSH      = false
 ; Whether to use the builtin SSH server or not.
@@ -77,7 +85,10 @@ PASSWD   = {{ gitea_db_password }}
 ; For MySQL, either "false" (default), "true", or "skip-verify"
 SSL_MODE = {{ gitea_db_ssl }}
 ; For "sqlite3" and "tidb", use an absolute path when you start gitea as service
-PATH     = {{ gitea_db_path }}
+PATH                  = {{ gitea_db_path }}
+{% if gitea_log_only_warning %}
+LOG_SQL               = false
+{% endif %}
 
 [indexer]
 ; Issue indexer storage path, available when ISSUE_INDEXER_TYPE is bleve
@@ -107,7 +118,8 @@ DISABLE_GIT_HOOKS   = {{ gitea_disable_git_hooks | ternary('true', 'false') }}
 
 [service]
 ; Disallow registration, only allow admins to create accounts.
-DISABLE_REGISTRATION             = {{ gitea_disable_registration }}
+DISABLE_REGISTRATION    = {{ gitea_disable_registration }}
+REGISTER_EMAIL_CONFIRM  = {{ gitea_register_email_confirm }}
 ; User must sign in to view anything.
 REQUIRE_SIGNIN_VIEW              = {{ gitea_require_signin | ternary('true', 'false') }}
 ; Enable captcha validation for registration
@@ -150,6 +162,7 @@ USER               = {{ gitea_mailer_user }}
 PASSWD             = {{ gitea_mailer_password }}
 ; Send mails as plain text
 SEND_AS_PLAIN_TEXT = false
+SUBJECT_PREFIX = {{ gitea_subject_prefix }}
 ; Set Mailer Type (either SMTP, sendmail or dummy to just send to the log)
 MAILER_TYPE        = {{ gitea_mailer_type }}
 ; Specify an alternative sendmail binary
@@ -180,12 +193,22 @@ PATH    = {{ gitea_home }}/data/attachments
 ROOT_PATH            = {{ gitea_home }}/log
 ; Either "console", "file", "conn", "smtp" or "database", default is "console"
 ; Use comma to separate multiple modes, e.g. "console, file"
-MODE                 = file
+{% if gitea_log_systemd %}
+MODE       = console
+MACARON    = console
+{% else %}
+MODE       = file
+{% endif %}
 ; Buffer length of the channel, keep it as it is if you don't know what it is.
 BUFFER_LEN           = 10000
 ; Either "Trace", "Debug", "Info", "Warn", "Error", "Critical", default is "Trace"
-LEVEL                = {{ gitea_log_level }}
+{% if gitea_log_only_warning %}
+LEVEL      = Warn
+REDIRECT_MACARON_LOG = true
+{% else %}
+LEVEL      = Info
 REDIRECT_MACARON_LOG = false
+{% endif %}
 
 [oauth2]
 ENABLE     = {{ gitea_oauth2_enabled }}

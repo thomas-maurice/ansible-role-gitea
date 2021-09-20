@@ -71,6 +71,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_disable_gravatar`: Do you want to disable Gravatar ? (privacy and so on) (true/false)
 * `gitea_offline_mode`: Same but for disabling CDNs for frontend assets (true/false)
 * `gitea_disable_registration`: Do you want to disable user registration ? (true/false)
+* `gitea_register_email_confirm`: Enable this to ask for mail confirmation of registration. Requires `gitea_mailer_enabled` to be enabled (Default: `false`)
 * `gitea_only_allow_external_registration`: Do you want to force registration only using third-party services ? (true/false)
 * `gitea_show_registration_button`: Do you want to show the registration button? (true/false)
 * `gitea_require_signin`: Do you require a signin to see repo's (even public ones) ? (true/false)
@@ -93,8 +94,9 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_root_url`: Root URL used to access your web app (full URL)
 * `gitea_protocol`: Listening protocol (http/https)
 * `gitea_http_listen`: Bind address
-* `gitea_http_port`: Bind port
+* `gitea_http_port`: Bind port (redirect from `80` will be activated if value is `443` - Default: `3000`)
 * `gitea_disable_http_git`: Disable the use of Git over HTTP ? (true/false)
+* `gitea_http_letsencrypt_mail` Enable Let`s Encrypt if a email address is given
 
 ### SSH configuration
 
@@ -122,11 +124,16 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 * `gitea_mailer_user`: SMTP server username
 * `gitea_mailer_password`: SMTP server password
 * `gitea_mailer_from`: Sender mail address
+* `gitea_subject_prefix`: Prefix to be placed before e-mail subject lines (Default: ``)
 * `gitea_enable_notify_mail`:  Whether e-mail should be send to watchers of a repository when something happens. Default: `false`
 * `gitea_mail_default`: Default configuration for email notifications for users (user configurable). Options: enabled, onmention, disable  (Default: `onmention` )
 * `gitea_autowatch_new_repo`: Enable this to let all organisation users watch new repos when they are created (Default: `false`)
 * `gitea_autowatch_on_change`: Enable this to make users watch a repository after their first commit to it (Default: `true`)
 * `gitea_show_mailstones_dashboard`: Enable this to show the milestones dashboard page - a view of all the user’s milestones (Default: `true`)
+
+### Log configuration
+* `gitea_log_systemd` Disable logging into `file`, use systemd-journald
+* `gitea_log_only_warning` Log only warnings or above, no http access or sql logging (Default: `true`)
 
 ### Fail2Ban configuration
 
