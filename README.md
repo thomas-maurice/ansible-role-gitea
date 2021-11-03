@@ -100,7 +100,7 @@ The following code has been tested with Debian 8, it should work on Ubuntu as we
 
 * `gitea_ssh_listen`: Bind address for the SSH server
 * `gitea_ssh_domain`: SSH domain (displayed in your clone URLs)
-* `gitea_start_ssh`: Do you want to start a built-in SSH server ? (true/false)
+* `gitea_start_ssh`: Do you want to start a built-in SSH server ? (true/false) If set to false the system ssh server will be used.
 * `gitea_ssh_port`: SSH bind port
 
 ### Database configuration

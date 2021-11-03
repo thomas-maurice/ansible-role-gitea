@@ -5,6 +5,12 @@
     system: true
     state: "present"
 
+# If the system sshd ist used, we must not use /bin/false. Instead use the normal /bin/sh to enable gitea to run its commands
+- name: Switch shell when not using the builtin ssh server
+  set_fact:
+    gitea_shell: "/bin/sh"
+  when: "not gitea_start_ssh and gitea_shell == '/bin/false'"
+
 - name: "Create Gitea user"
   ansible.builtin.user:
     name: "{{ gitea_user }}"
