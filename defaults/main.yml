@@ -26,7 +26,6 @@ gitea_offline_mode: true
 gitea_lfs_server_enabled: false
 gitea_lfs_content_path: "{{ gitea_home }}/data/lfs"
 gitea_lfs_jwt_secret: ''
-gitea_lfs_content_path: "data/lfs"
 gitea_lfs_secret: SomethingVeryLong
 gitea_lfs_mode: true
 
