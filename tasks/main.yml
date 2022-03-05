@@ -21,15 +21,8 @@
   failed_when: false
   when: gitea_version_check|bool
 
-- name: "Download the binary"
-  ansible.builtin.get_url:
-    url: "{{ gitea_dl_url }}"
-    dest: /usr/local/bin/gitea
-    owner: root
-    group: root
-    mode: 0755
-    force: true
-  notify: "Restart gitea"
+- name: "Install Gitea"
+  import_tasks: install.yml
   when: (not gitea_version_check|bool) or (not ansible_check_mode and (gitea_active_version.stdout != gitea_version))
 
 - include: create_user.yml
