@@ -19,7 +19,7 @@ FORCE_PRIVATE       = {{ gitea_force_private | ternary('true', 'false') }}
 ; Global limit of repositories per user, applied at creation time. -1 means no limit
 MAX_CREATION_LIMIT  = {{ gitea_user_repo_limit }}
 ; Mirror sync queue length, increase if mirror syncing starts hanging
-MIRROR_QUEUE_LENGTH = 1000
+; --> MIRROR_QUEUE_LENGTH = 1000
 ; Disable the ability to interact with repositories using the HTTP protocol
 DISABLE_HTTP_GIT    = {{ gitea_disable_http_git | ternary('true', 'false') }}
 
@@ -57,10 +57,10 @@ APP_DATA_PATH    = {{ gitea_home }}/data
 ;Enables git-lfs support.
 LFS_START_SERVER = true
 ; Where to store LFS files.
-; LFS_CONTENT_PATH = {{ gitea_lfs_content_path }}
+; --> LFS_CONTENT_PATH = {{ gitea_lfs_content_path }}
 ; LFS authentication secret
 LFS_JWT_SECRET   = {{ gitea_lfs_jwt_secret }}
-; LFS_CONTENT_PATH      = {{ gitea_lfs_content_path }}
+; --> LFS_CONTENT_PATH      = {{ gitea_lfs_content_path }}
 ; if the LFS sotre is not offline/local
 LFS_JWT_SECRET       = {{ gitea_lfs_secret }} 
 OFFLINE_MODE         = {{ gitea_lfs_mode }}
@@ -87,10 +87,10 @@ PATH     = {{ gitea_db_path }}
 ; Issue indexer storage path, available when ISSUE_INDEXER_TYPE is bleve
 ISSUE_INDEXER_PATH            = {{ gitea_home }}/indexers/issues.bleve
 ; Issue indexer queue, currently support: channel or levelqueue, default is levelqueue
-ISSUE_INDEXER_QUEUE_TYPE      = levelqueue
+; --> ISSUE_INDEXER_QUEUE_TYPE      = levelqueue
 ; When ISSUE_INDEXER_QUEUE_TYPE is levelqueue, this will be the queue will be saved path,
 ; default is indexers/issues.queue
-ISSUE_INDEXER_QUEUE_DIR       = {{ gitea_home }}/indexers/issues.queue
+; --> ISSUE_INDEXER_QUEUE_DIR       = {{ gitea_home }}/indexers/issues.queue
 ; repo indexer by default disabled, since it uses a lot of disk space
 REPO_INDEXER_ENABLED          = {{ gitea_repo_indexer_enabled }}
 REPO_INDEXER_PATH             = {{ gitea_home }}/indexers/repos.bleve
@@ -98,6 +98,9 @@ REPO_INDEXER_INCLUDE          = {{ gitea_repo_indexer_include }}
 REPO_INDEXER_EXCLUDE          = {{ gitea_repo_indexer_exclude }}
 REPO_INDEXER_EXCLUDE_VENDORED = {{ gitea_repo_exclude_vendored }}
 MAX_FILE_SIZE                 = {{ gitea_repo_indexer_max_file_size }}
+
+[queue]
+LENGTH = 1000
 
 [security]
 ; Whether the installer is disabled
