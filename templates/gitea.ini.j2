@@ -102,6 +102,11 @@ MAX_FILE_SIZE                 = {{ gitea_repo_indexer_max_file_size }}
 [queue]
 LENGTH = 1000
 
+[queue.issue_indexer]
+TYPE = levelqueue
+DATADIR = {{ gitea_home }}/indexers/issues.queue
+LENGTH = 1000
+
 [security]
 ; Whether the installer is disabled
 INSTALL_LOCK        = true
