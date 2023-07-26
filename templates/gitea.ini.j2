@@ -1,16 +1,17 @@
 ; this file is the configuration of your local gitea instance
 ; {{ ansible_managed }}
-;
+; 
 ; This file overwrites the default values from gitea.
 ; undefined variables will use the default value from gitea.
 ; Cheat Sheet: https://docs.gitea.io/en-us/config-cheat-sheet/
-;
+; 
 ; App name that shows on every page title
 APP_NAME = {{ gitea_app_name }}
 ; Change it if you run locally
 RUN_USER = {{ gitea_user }}
 ; Either "dev", "prod" or "test", default is "dev"
 RUN_MODE = prod
+WORK_PATH = /usr/local/bin
 
 [repository]
 ROOT = {{ gitea_repository_root }}
@@ -49,17 +50,15 @@ SSH_LISTEN_HOST = {{ gitea_ssh_listen }}
 SSH_PORT = {{ gitea_ssh_port }}
 ; The port number the builtin SSH server should listen on
 SSH_LISTEN_PORT = %(SSH_PORT)s
-; Disable CDN even in "prod" mode
-OFFLINE_MODE = {{ gitea_offline_mode | ternary('true', 'false') }}
 ; Default path for App data
 APP_DATA_PATH = {{ gitea_home }}/data
 {% if gitea_lfs_server_enabled | bool -%}
-;Enables git-lfs support.
+; Enables git-lfs support.
 LFS_START_SERVER = true
 ; Where to store LFS files.
 ; --> LFS_CONTENT_PATH = {{ gitea_lfs_content_path }}
 ; LFS authentication secret
-LFS_JWT_SECRET = {{ gitea_lfs_jwt_secret }}
+; LFS_JWT_SECRET = {{ gitea_lfs_jwt_secret }}
 ; --> LFS_CONTENT_PATH = {{ gitea_lfs_content_path }}
 ; if the LFS sotre is not offline/local
 LFS_JWT_SECRET = {{ gitea_lfs_secret }} 
@@ -128,8 +127,8 @@ ENABLE_CAPTCHA = {{ gitea_enable_captcha | ternary('true', 'false') }}
 CAPTCHA_TYPE = image
 ; Enable recaptcha to use Google's recaptcha service
 ; Go to https://www.google.com/recaptcha/admin to sign up for a key
-RECAPTCHA_SECRET =
-RECAPTCHA_SITEKEY =
+RECAPTCHA_SECRET = 
+RECAPTCHA_SITEKEY = 
 ; Show Registration button
 SHOW_REGISTRATION_BUTTON = {{ gitea_show_registration_button }}
 ALLOW_ONLY_EXTERNAL_REGISTRATION = {{ gitea_only_allow_external_registration }}
