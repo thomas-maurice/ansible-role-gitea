@@ -138,6 +138,17 @@ DEFAULT_EMAIL_NOTIFICATIONS       = {{ gitea_mail_default }}
 AUTO_WATCH_NEW_REPOS              = {{ gitea_autowatch_new_repo }} 
 AUTO_WATCH_ON_CHANGES             = {{ gitea_autowatch_on_change }} 
 SHOW_MILESTONES_DASHBOARD_PAGE    = {{ gitea_show_mailstones_dashboard }} 
+REGISTER_EMAIL_CONFIRM            = {{ gitea_register_email_confirm }}
+REGISTER_MANUAL_CONFIRM           = {{ gitea_register_manual_confirm }}
+DEFAULT_ALLOW_CREATE_ORGANIZATION = {{ gitea_default_allow_create_organization }}
+DEFAULT_USER_IS_RESTRICTED        = {{ gitea_default_user_is_restricted }}
+{% if gitea_email_domain_allowlist is defined and gitea_email_domain_allowlist|length  %}
+EMAIL_DOMAIN_ALLOWLIST            = {{ gitea_email_domain_allowlist }}
+{% endif %}
+AUTO_WATCH_NEW_REPOS              = {{ gitea_auto_watch_new_repos }}
+DEFAULT_USER_VISIBILITY           = {{ gitea_default_user_visibility }}
+DEFAULT_ORG_VISIBILITY            = {{ gitea_default_org_visibility }}
+ALLOW_ONLY_INTERNAL_REGISTRATION  = {{ gitea_allow_only_internal_registration }}
 
 [mailer]
 ENABLED            = {{ gitea_mailer_enabled | ternary('true', 'false') }}

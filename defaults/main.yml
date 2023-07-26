@@ -58,6 +58,17 @@ gitea_mail_default: onmention
 gitea_autowatch_new_repo: false
 gitea_autowatch_on_change: true
 gitea_show_mailstones_dashboard: true
+# make sure, that register_email_confirm is false when register_manual_confirm is set to true
+gitea_register_email_confirm: false
+gitea_register_manual_confirm: true
+gitea_default_allow_create_organization: false
+gitea_default_user_is_restricted: true
+gitea_email_domain_allowlist: ""
+gitea_auto_watch_new_repos: false
+gitea_default_user_visibility: limited
+gitea_default_org_visibility: limited
+gitea_allow_only_internal_registration: true
+
 
 gitea_force_private: false
 
