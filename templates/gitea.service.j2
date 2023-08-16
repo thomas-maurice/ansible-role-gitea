@@ -11,6 +11,8 @@ WorkingDirectory={{ gitea_home }}
 {% if gitea_systemd_cap_net_bind_service %}
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 {% endif %}
+RestartSec=2s
+Type=notify
 
 [Install]
 WantedBy=multi-user.target

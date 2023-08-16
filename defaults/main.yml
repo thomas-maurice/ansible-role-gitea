@@ -26,7 +26,6 @@ gitea_offline_mode: true
 gitea_lfs_server_enabled: false
 gitea_lfs_content_path: "{{ gitea_home }}/data/lfs"
 gitea_lfs_jwt_secret: ''
-gitea_lfs_content_path: "data/lfs"
 gitea_lfs_secret: SomethingVeryLong
 gitea_lfs_mode: true
 
@@ -59,17 +58,33 @@ gitea_mail_default: onmention
 gitea_autowatch_new_repo: false
 gitea_autowatch_on_change: true
 gitea_show_mailstones_dashboard: true
+# make sure, that register_email_confirm is false when register_manual_confirm is set to true
+gitea_register_email_confirm: false
+gitea_register_manual_confirm: true
+gitea_default_allow_create_organization: false
+gitea_default_user_is_restricted: true
+gitea_email_domain_allowlist: ""
+gitea_auto_watch_new_repos: false
+gitea_default_user_visibility: limited
+gitea_default_org_visibility: limited
+gitea_allow_only_internal_registration: true
+
 
 gitea_force_private: false
 
 gitea_mailer_enabled: false
-gitea_mailer_skip_verify: false
 gitea_mailer_tls_enabled: true
-gitea_mailer_host: localhost:25
+gitea_mailer_smtp_addr: "localhost"
+gitea_mailer_smtp_port: "25"
 gitea_mailer_from: noreply@your.domain
 gitea_mailer_user: ""
 gitea_mailer_password: ""
 gitea_mailer_type: smtp
+gitea_mailer_protocol: "smtp"
+# protocol can be one of "smtp", "smtps", "smtp+starttls", "smtp+unix", "sendmail", "dummy"
+gitea_mailer_force_trust_server_cert: false
+gitea_mailer_use_client_cert: false
+gitea_mailer_enable_helo: true
 
 gitea_fail2ban_enabled: false
 gitea_fail2ban_jail_maxretry: 10
