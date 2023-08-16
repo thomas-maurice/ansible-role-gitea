@@ -73,13 +73,18 @@ gitea_allow_only_internal_registration: true
 gitea_force_private: false
 
 gitea_mailer_enabled: false
-gitea_mailer_skip_verify: false
 gitea_mailer_tls_enabled: true
-gitea_mailer_host: localhost:25
+gitea_mailer_smtp_addr: "localhost"
+gitea_mailer_smtp_port: "25"
 gitea_mailer_from: noreply@your.domain
 gitea_mailer_user: ""
 gitea_mailer_password: ""
 gitea_mailer_type: smtp
+gitea_mailer_protocol: "smtp"
+# protocol can be one of "smtp", "smtps", "smtp+starttls", "smtp+unix", "sendmail", "dummy"
+gitea_mailer_force_trust_server_cert: false
+gitea_mailer_use_client_cert: false
+gitea_mailer_enable_helo: true
 
 gitea_fail2ban_enabled: false
 gitea_fail2ban_jail_maxretry: 10

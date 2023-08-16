@@ -155,15 +155,17 @@ ENABLED = {{ gitea_mailer_enabled | ternary('true', 'false') }}
 ; Gmail: smtp.gmail.com:587
 ; QQ: smtp.qq.com:465
 ; Note, if the port ends with "465", SMTPS will be used. Using STARTTLS on port 587 is recommended per RFC 6409. If the server supports STARTTLS it will always be used.
-HOST = {{ gitea_mailer_host }}
+SMTP_ADDR = {{ gitea_mailer_smtp_addr }}
+SMTP_PORT = {{ gitea_mailer_smtp_port }}
+PROTOCOL = {{ gitea_mailer_protocol }}
 ; Do not verify the certificate of the server. Only use this for self-signed certificates
-SKIP_VERIFY = {{ gitea_mailer_skip_verify }}
 ; Use client certificate
-USE_CERTIFICATE = false
-CERT_FILE = {{ gitea_home }}/custom/mailer/cert.pem
-KEY_FILE = {{ gitea_home }}/custom/mailer/key.pem
+; USE_CERTIFICATE = false
+USE_CLIENT_CERT = {{ gitea_mailer_use_client_cert }}
+CLIENT_CERT_FILE = {{ gitea_home }}/custom/mailer/cert.pem
+CLIENT_KEY_FILE = {{ gitea_home }}/custom/mailer/key.pem
+FORCE_TRUST_SERVER_CERT = {{ gitea_mailer_force_trust_server_cert }}
 ; Should SMTP connection use TLS
-IS_TLS_ENABLED = {{ gitea_mailer_tls_enabled | ternary('true', 'false') }}
 ; Mail from address, RFC 5322. This can be just an email address, or the `"Name" <email@example.com>` format
 FROM = {{ gitea_mailer_from }}
 ; Mailer user name and password
@@ -172,10 +174,9 @@ USER = {{ gitea_mailer_user }}
 PASSWD = {{ gitea_mailer_password }}
 ; Send mails as plain text
 SEND_AS_PLAIN_TEXT = false
-; Set Mailer Type (either SMTP, sendmail or dummy to just send to the log)
-MAILER_TYPE = {{ gitea_mailer_type }}
 ; Specify an alternative sendmail binary
 SENDMAIL_PATH = sendmail
+ENABLE_HELO = {{ gitea_mailer_enable_helo }}
 
 [session]
 ; Either "memory", "file", or "redis", default is "memory"
